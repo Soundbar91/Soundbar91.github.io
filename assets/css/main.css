@@ -429,6 +429,10 @@ main.container {
   padding-left: 1.25rem;
 }
 
+.toc-h4 {
+  padding-left: 2.5rem;
+}
+
 .toc-entry a {
   color: var(--text-muted);
   font-size: 0.9rem;
