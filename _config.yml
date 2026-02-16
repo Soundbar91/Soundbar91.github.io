@@ -3,6 +3,7 @@ title: Soundbar91
 description: "개발과 기술에 대한 이야기"
 url: "https://soundbar91.me"
 baseurl: ""
+future: true
 author: Soundbar91
 
 # Build Settings
