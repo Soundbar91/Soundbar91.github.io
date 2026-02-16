@@ -14,7 +14,7 @@ permalink: /:categories/:title/
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-  toc_levels: "2..3"
+  toc_levels: "2..4"
 
 # Pagination
 plugins:

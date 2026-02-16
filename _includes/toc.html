@@ -4,7 +4,7 @@
 {% for header in headers %}
   {% if header contains 'id="' %}
     {% assign level = header | slice: 0, 1 %}
-    {% if level == '2' or level == '3' %}
+    {% if level == '2' or level == '3' or level == '4' %}
       {% assign heading_tag = header | split: '</h' | first %}
       {% assign id = heading_tag | split: 'id="' | last | split: '"' | first %}
       {% assign title = heading_tag | split: '">' | last %}
@@ -12,6 +12,8 @@
         <li class="toc-entry toc-h2"><a href="#{{ id }}">{{ title }}</a></li>
       {% elsif level == '3' %}
         <li class="toc-entry toc-h3"><a href="#{{ id }}">{{ title }}</a></li>
+      {% elsif level == '4' %}
+        <li class="toc-entry toc-h4"><a href="#{{ id }}">{{ title }}</a></li>
       {% endif %}
     {% endif %}
   {% endif %}
