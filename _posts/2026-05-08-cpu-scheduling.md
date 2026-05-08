@@ -54,7 +54,7 @@ CPU 스케줄링 알고리즘을 비교하는 기준은 여러가지가 있다.
         
     - 다음 작업 시간을 알 방법이 없기 때문에 구현이 어려움 → 과거의 기록을 통해 예측
         
-        $$ \tau_{n+1} = \alpha t_n + (1-\alpha)\tau_n $$
+        ![image.png](/assets/images/SJF.png)
         
         - tn : n번째 실제 측정된 CPU 버스트 시간
         - τn : n번째 예측값
