@@ -26,13 +26,28 @@ title: Home
   </ul>
 
   {% if paginator.total_pages > 1 %}
-  <nav class="pagination">
+  <nav class="pagination" aria-label="페이지 네비게이션">
     {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | relative_url }}">&#8592; Prev</a>
+      <a class="pagination-control" href="{{ paginator.previous_page_path | relative_url }}">이전으로</a>
+    {% else %}
+      <span class="pagination-control disabled" aria-disabled="true">이전으로</span>
     {% endif %}
-    <span class="current">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <span class="pagination-number current" aria-current="page">{{ page }}</span>
+      {% elsif page == 1 %}
+        <a class="pagination-number" href="{{ '/' | relative_url }}">{{ page }}</a>
+      {% else %}
+        {% assign page_path = site.paginate_path | replace: ':num', page %}
+        <a class="pagination-number" href="{{ page_path | relative_url }}">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+
     {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | relative_url }}">Next &#8594;</a>
+      <a class="pagination-control" href="{{ paginator.next_page_path | relative_url }}">다음으로</a>
+    {% else %}
+      <span class="pagination-control disabled" aria-disabled="true">다음으로</span>
     {% endif %}
   </nav>
   {% endif %}
