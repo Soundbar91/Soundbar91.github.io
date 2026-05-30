@@ -2,9 +2,9 @@
 title: 데이터 링크 계층
 date: 2026-05-24
 categories:
-  - OS
+  - Network
 tags:
-  - OS
+  - Network
 toc: true
 excerpt: 데이터 링크 계층에 대해서 알아보자
 ---
