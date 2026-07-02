@@ -4,7 +4,7 @@ title: Posts
 permalink: /posts/
 ---
 <section class="home">
-  <ul class="post-list" id="post-list">
+  <ul class="post-list" id="post-list" data-page-size="{{ site.paginate | default: 10 }}">
     {% for post in site.posts %}
       <li class="post-item" data-categories="{{ post.categories | join: ',' }}">
         <div class="post-item-body">
@@ -27,4 +27,5 @@ permalink: /posts/
       </li>
     {% endfor %}
   </ul>
+  <nav class="pagination" id="post-pagination" aria-label="게시글 페이지"></nav>
 </section>
