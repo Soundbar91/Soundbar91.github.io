@@ -10,11 +10,23 @@
       category: DB
     - name: 인프라
       category: Infra
+    - name: Git
+      category: Git
 - name: PS
   children:
     - name: 알고리즘
       category: Algorithm
+- name: Backend
+  children:
+    - name: Java
+      category: Java
+    - name: Spring
+      category: Spring
+    - name: Web
+      category: Web
 - name: Daily
   children:
     - name: 회고
       category: Daily
+    - name: 프로젝트
+      category: Project
