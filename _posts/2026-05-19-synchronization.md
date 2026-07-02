@@ -49,7 +49,7 @@ count = register_1
 
 증감 연산자가 3개의 명령어로 나눠서 실행되고 있다. 이때, 각 명령어를 수행하는 중간중간 인터럽트가 발생하여 컨텍스트 스위칭이 발생하게 된다면 문제가 발생한다. register_1에서는 10의 값을 읽고 1을 증가시켰는데 인터럽트가 발생하여 소비자 코드가 실행이 됐다고 하자. 그럼 소비자 코드로 인해 count에는 9라는 값이 저장되고, 인터럽트가 발생하여 컨텍스트 스위칭이 발생하면 생산자 코드에서는 여전히 11이라는 값을 가지고 있기 때문에 count의 값이 11이 되버리는 문제가 발생한다.
 
-![image.png](/assets/images/critical-section-problem-background.png)
+![image.png](/assets/images/posts/os/synchronization/critical-section-problem-background.png)
 
 이처럼 동시에 여러 개의 프로세스가 동일한 자료를 접근하고 조작하고, 그 실행 결과가 발생한 특정 순서에 의존하는 상황을 경쟁 상황이라고 한다.
 
@@ -59,7 +59,7 @@ count = register_1
 
 그렇기 때문에, 임계 영역 문제는 서로 다른 프로세스들이 동시에 임계 영역에 접근하는 것을 막는 것이다. 임계 영역에 접근하기 위해서는 접근 권한을 받아야하는데, 이때 접근 권한을 요청하는 코드 부분을 진입 구역이라고 한다. 임계 영역에서 작업이 끝나고 나오는 부분을 퇴출 구역, 그 이외의 나머지 코드를 나무지 구역이라고 부른다.
 
-![image.png](/assets/images/critical-section-problem.png)
+![image.png](/assets/images/posts/os/synchronization/critical-section-problem.png)
 
 임계 영역 문제에 대한 해결책은 아래 세 가지 요구 조건을 만족해야 한다.
 

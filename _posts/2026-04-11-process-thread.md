@@ -38,7 +38,7 @@ excerpt: 프로세스와 스레드에 대해서 알아보자
 
 프로세스의 상태들이 연결되는 과정은 다음과 같다.
 
-![state-transition.png](/assets/images/state-transition.png)
+![state-transition.png](/assets/images/posts/os/process-thread/state-transition.png)
 
 - New → Ready (Admit) : 프로세스가 생성되어 Ready 큐에 등록된다.
 - Ready → Running (Scheduler Dispatch) : 프로세스가 CPU를 할당받고 명령어를 실행한다.
@@ -51,7 +51,7 @@ excerpt: 프로세스와 스레드에 대해서 알아보자
 
 프로세스 제어 블록이라고 불리는 PCB는 프로세스 상태, 프로그램 카운터 그리고 CPU 레지스터등과 같은 프로세스와 관련된 정보를 가지고 있다.
 
-![pcb.png](/assets/images/pcb.png)
+![pcb.png](/assets/images/posts/os/process-thread/pcb.png)
 
 **생성**
 
@@ -59,7 +59,7 @@ excerpt: 프로세스와 스레드에 대해서 알아보자
 
 부모 프로세스와 자식 프로세스를 실행시키는 데 두 가지 방법이 존재한다.
 
-![proc-create.png](/assets/images/proc-create.png)
+![proc-create.png](/assets/images/posts/os/process-thread/proc-create.png)
 
 1. 부모 프로세스와 자식 프로세스를 병행해서 실행한다.
 2. 부모 프로세스는 자식 프로세스의 작업이 종료될 때까지 대기한다.
@@ -83,7 +83,7 @@ fork() 시스템 콜을 통해 자식 프로세스를 생성했다고 가정하�
 
 스레드는 CPU 이용의 기본 단위이며, 스레드 ID, 프로그램 카운터, 레지스터 집합 그리고 스택으로 구성된다. 하나의 프로세스 내에 존재하는 스레드들은 프로세스의 힙, 코드, 데이터 그리고 열린 파일 등 운영체제 자원들을 공유한다.
 
-![thread.png](/assets/images/thread.png)
+![thread.png](/assets/images/posts/os/process-thread/thread.png)
 
 **장점**
 
@@ -107,19 +107,19 @@ fork() 시스템 콜을 통해 자식 프로세스를 생성했다고 가정하�
 
 - 다대일 모델
 
-![one-to-many.png](/assets/images/one-to-many.png)
+![one-to-many.png](/assets/images/posts/os/process-thread/one-to-many.png)
 
 스레드 관리가 사용자 수준 라이브러리에 의해 이루어진다. 모든 사용자 스레드가 하나의 커널 스레드에 매핑되므로, 한 스레드가 블로킹 시스템 콜을 호출하면 같은 프로세스의 다른 모든 스레드까지 함께 멈춘다. 또한 커널은 한 번에 하나의 스레드만 스케줄링할 수 있기 때문에, 다중 코어 환경에서도 병렬 실행이 불가능하다.
 
 - 일대일 모델
 
-![one-to-one.png](/assets/images/one-to-one.png)
+![one-to-one.png](/assets/images/posts/os/process-thread/one-to-one.png)
 
 각 사용자 스레드**가** 각각 하나의 커널 스레드**에** 매핑된다. 한 스레드가 블로킹 시스템 콜을 호출해도 다른 스레드는 계속 실행될 수 있으며, 다중 코어 환경에서 여러 스레드를 병렬로 실행할 수 있다. 사용자 스레드를 생성할 때마다 커널 스레드도 함께 생성되어야하고, 많은 수의 커널 스레드가 시스템 성능에 부담을 줄 수 있다는 것이 단점이다.
 
 - 다대다 모델
 
-![many-to-many.png](/assets/images/many-to-many.png)
+![many-to-many.png](/assets/images/posts/os/process-thread/many-to-many.png)
 
 다대다 모델은 여러 사용자 스레드를 그보다 적거나 같은 수의 커널 스레드에 매핑하는 모델이다. 사용자 스레드는 자유롭게 생성할 수 있으면서도, 여러 커널 스레드를 사용하기 때문에 다중 코어 환경에서 병렬 실행이 가능하다. 또한 한 스레드가 블로킹 시스템 콜을 호출해도 커널이 다른 커널 스레드를 통해 다른 사용자 스레드를 계속 실행할 수 있다.
 
@@ -129,7 +129,7 @@ fork() 시스템 콜을 통해 자식 프로세스를 생성했다고 가정하�
 
 프로그램이 메모리에 적재될 때, 주소 공간은 크게 네 영역으로 나뉜다.
 
-![many-to-many.png](/assets/images/many-to-many.png)
+![many-to-many.png](/assets/images/posts/os/process-thread/many-to-many.png)
 
 - **Stack**
 
@@ -195,4 +195,4 @@ ex) global y = 15;
 
 컨텍스트 스위칭하는 과정에서 어떤 유저 프로세스의 작업을 하지 못하기 때문에 이 과정에서 손실(오버헤드)가 발생한다.
 
-![context-switching.png](/assets/images/context-switching.png)
+![context-switching.png](/assets/images/posts/os/process-thread/context-switching.png)

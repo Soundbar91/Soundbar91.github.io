@@ -120,7 +120,7 @@ TCP는 윈도우라는 개념을 사용해 송신량을 조절한다. 수신자�
 
 TCP는 데이터를 하나 보내고 ACK를 기다리는 방식이 아닌 슬라이딩 윈도우 방식을 사용하여 데이터를 보낸다. ACK를 받으면 윈도우가 오른쪽으로 이동하면서 새로운 데이터를 보낼 수 있게 된다.
 
-![image.png](/assets/images/transport-layer-1.png)
+![image.png](/assets/images/posts/network/transport-layer/transport-layer-1.png)
 
 ## 혼잡 제어
 

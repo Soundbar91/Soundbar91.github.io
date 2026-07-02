@@ -25,7 +25,7 @@ excerpt: 네트워크 계층에 대해서 알아보자
 
 데이터에는 다음과 같은 IP 헤더가 추가된다. 이러한 형태를 `IP 패킷` 이라고 한다.
 
-![image.png](/assets/images/network-layer-1.png)
+![image.png](/assets/images/posts/network/network-layer/network-layer-1.png)
 
 **버전**
 
@@ -164,12 +164,12 @@ Internet Control Message Protocol의 약자로 네트워크 장치에서 네트�
 
 Packet Internet Groper의 약자로 다른 호스트에 IP 데이터그램이 도달하는지 여부를 확인한다.
 
-![image.png](/assets/images/network-layer-2.png)
+![image.png](/assets/images/posts/network/network-layer/network-layer-2.png)
 
 **traceroute**
 
 패킷이 목적지에 도달할 때까지 거치는 경로를 추적하는 데 사용한다. 각 구간에서 발생하는 지연시간을 확인할 수 있다.
 
-![image.png](/assets/images/network-layer-3.png)
+![image.png](/assets/images/posts/network/network-layer/network-layer-3.png)
 
 5 ~ 7번에서는 응답이 없다. 일부 라우터가 ICMP 패킷에 응답하지 않도록 설정되어 있기 때문이다.

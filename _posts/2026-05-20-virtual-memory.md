@@ -7,17 +7,17 @@ excerpt: 가상 메모리에 대해서 알아보자
 ---
 ## 가상 메모리
 
-![image.png](/assets/images/virtual-memory-1.png)
+![image.png](/assets/images/posts/os/virtual-memory/virtual-memory-1.png)
 
 우리가 사용하는 메모리의 용량은 보통 16GB부터 시작하고, 위 사진에서 리그 오브 레전드의 용량이 40GB임을 확인할 수 있다. 프로그램을 실행하면 메모리에 적제되고 운영체제로부터 자원을 할당받는다고 알고 있다. 하지만, 용량이 16GB인 메모리에 40GB나 되는 프로그램을 올리게 되면 용량이 초과되는 문제가 발생한다. 그렇다면 어떻게 용량이 큰 프로그램을 실행할 수 있을까?
 
-![image.png](/assets/images/virtual-memory-2.png)
+![image.png](/assets/images/posts/os/virtual-memory/virtual-memory-2.png)
 
 가상 메모리라는 메커니즘을 통해 프로그램을 실행한다. 이는 프로그램이 실행될 때, 필요한 부분만 메모리에 올리고 나머지는 보조기억장치와 같은 디스크에 두는 메커니즘이다. 이를 통해 논리 주소 공간을 물리 주소 공간으로부터 분리할 수 있다.
 
 가상 메모리는 두개 이상의 프로세스 간에 페이지 공유를 통해 파일과 메모리 공유를 허용한다. 가령, printf()와 같이 자주 사용하지만 변할 가능성이 없는 libc 라이브러리가 있다고 가정을 하자. 여러 프로세스에서 해당 라이브러리의 페이지를 계속 만들게 된다면 불필요한 리소스 낭비가 될 수 있다. 이렇게 자주 사용하지만 변할 가능성이 없는 라이브러리를 별도의 페이지로 메모리에 적재하고 이를 공유한다.
 
-![image.png](/assets/images/virtual-memory-3.png)
+![image.png](/assets/images/posts/os/virtual-memory/virtual-memory-3.png)
 
 ## 요구 페이징
 
