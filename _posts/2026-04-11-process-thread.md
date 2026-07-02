@@ -3,9 +3,6 @@ title: 프로세스와 스레드
 date: 2026-04-11
 categories:
   - OS
-tags:
-  - OS
-toc: true
 excerpt: 프로세스와 스레드에 대해서 알아보자
 ---
 ### 프로세스

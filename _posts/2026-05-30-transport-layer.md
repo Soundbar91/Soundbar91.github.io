@@ -3,9 +3,6 @@ title: 전송 계층
 date: 2026-05-30
 categories:
   - Network
-tags:
-  - Network
-toc: true
 excerpt: 전송 계층에 대해서 알아 보자
 ---
 ## 전송 계층

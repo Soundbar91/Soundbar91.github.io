@@ -3,9 +3,6 @@ title: 가상 메모리
 date: 2026-05-20
 categories:
   - OS
-tags:
-  - OS
-toc: true
 excerpt: 가상 메모리에 대해서 알아보자
 ---
 ## 가상 메모리

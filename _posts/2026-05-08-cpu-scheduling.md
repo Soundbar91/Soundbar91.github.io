@@ -3,9 +3,6 @@ title: CPU 스케줄링
 date: 2026-05-08
 categories:
   - OS
-tags:
-  - OS
-toc: true
 excerpt: CPU 스케줄링에 대해서 알아보자
 ---
 ### CPU 스케줄링

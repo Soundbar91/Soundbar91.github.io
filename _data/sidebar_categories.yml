@@ -6,7 +6,7 @@
       category: OS
     - name: 네트워크
       category: Network
-    - name: DB
+    - name: 데이터베이스
       category: DB
     - name: 인프라
       category: Infra

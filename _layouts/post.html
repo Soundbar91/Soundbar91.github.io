@@ -15,21 +15,7 @@ layout: default
         </span>
       {% endif %}
     </div>
-    {% if page.tags.size > 0 %}
-      <div class="post-tags">
-        {% for tag in page.tags %}
-          <span class="tag">{{ tag }}</span>
-        {% endfor %}
-      </div>
-    {% endif %}
   </header>
-
-  {% if page.toc %}
-  <nav class="toc">
-    <h2>목차</h2>
-    {% include toc.html html=content %}
-  </nav>
-  {% endif %}
 
   <div class="post-content">
     {{ content }}

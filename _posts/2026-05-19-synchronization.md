@@ -3,9 +3,6 @@ title: 동기화
 date: 2026-05-19
 categories:
   - OS
-tags:
-  - OS
-toc: true
 excerpt: 동기화에 대해서 알아보자
 ---
 ## 경쟁 상태

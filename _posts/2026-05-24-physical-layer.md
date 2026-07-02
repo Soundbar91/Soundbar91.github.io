@@ -3,9 +3,6 @@ title: 물리 계층
 date: 2026-05-24
 categories:
   - Network
-tags:
-  - Network
-toc: true
 excerpt: 물리 계층에 대해서 알아보자
 ---
 ## 1계층 - 물리 계층
