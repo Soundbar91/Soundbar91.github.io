@@ -1,5 +1,8 @@
 .idea/
 .obsidian
 template
+/.bundle/
+/_site/
+/vendor/
 
 .DS_Store

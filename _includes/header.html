@@ -1,19 +1,35 @@
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="site-logo" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    <nav class="site-nav">
-      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
-      <a href="{{ '/categories/' | relative_url }}" {% if page.url contains '/categories' %}class="active"{% endif %}>Categories</a>
-      <a href="{{ '/tags/' | relative_url }}" {% if page.url contains '/tags' %}class="active"{% endif %}>Tags</a>
-      <a href="{{ '/search/' | relative_url }}" {% if page.url == '/search/' %}class="active"{% endif %}>Search</a>
-      <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}class="active"{% endif %}>About</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </nav>
+<aside class="site-sidebar" id="site-sidebar">
+  <div class="sidebar-inner">
+    <a class="profile" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} 홈">
+      <img class="profile-image" src="{{ '/assets/images/shingwangyu.png' | relative_url }}" alt="{{ site.author }} 프로필">
+      <span class="profile-name">{{ site.author | default: site.title }}</span>
+    </a>
+
     <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
+
+    <nav class="sidebar-panel" aria-label="블로그 카테고리">
+      <div class="sidebar-section-title">카테고리</div>
+      <a class="category-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">
+        <span>전체 글</span>
+        <span class="category-count">{{ site.posts | size }}</span>
+      </a>
+      {% assign sorted_categories = site.categories | sort %}
+      {% for category in sorted_categories %}
+        {% assign category_name = category[0] %}
+        {% assign category_id = category_name | slugify %}
+        {% assign category_url = '/categories/#' | append: category_id %}
+        <a class="category-link{% if page.categories contains category_name %} active{% endif %}" href="{{ category_url | relative_url }}">
+          <span>{{ category_name }}</span>
+          <span class="category-count">{{ category[1].size }}</span>
+        </a>
+      {% endfor %}
+    </nav>
+
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
-</header>
+</aside>
