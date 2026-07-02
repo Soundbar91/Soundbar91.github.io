@@ -4,9 +4,9 @@ title: Posts
 permalink: /posts/
 ---
 <section class="home">
-  <ul class="post-list">
+  <ul class="post-list" id="post-list">
     {% for post in site.posts %}
-      <li class="post-item">
+      <li class="post-item" data-categories="{{ post.categories | join: ',' }}">
         <div class="post-item-body">
           <h2 class="post-item-title">
             <a href="{{ post.url | relative_url }}">{{ post.title }}</a>

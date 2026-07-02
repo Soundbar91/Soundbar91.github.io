@@ -9,11 +9,22 @@ permalink: /categories/
     {% for category in sorted_categories %}
       <div class="category-group">
         <h2 id="{{ category[0] | slugify }}">{{ category[0] }} <small>({{ category[1].size }})</small></h2>
-        <ul class="category-posts">
+        <ul class="post-list category-post-list">
           {% for post in category[1] %}
-            <li>
-              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+            <li class="post-item">
+              <div class="post-item-body">
+                <h3 class="post-item-title">
+                  <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                </h3>
+                <div class="post-item-meta">
+                  <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y년 %m월 %d일" }}</time>
+                  &middot;
+                  {{ category[0] }}
+                </div>
+                {% if post.excerpt %}
+                  <p class="post-item-excerpt">{{ post.excerpt | strip_html | truncate: 220 }}</p>
+                {% endif %}
+              </div>
             </li>
           {% endfor %}
         </ul>

@@ -15,15 +15,31 @@
         <span>전체 글</span>
         <span class="category-count">{{ site.posts | size }}</span>
       </a>
-      {% assign sorted_categories = site.categories | sort %}
-      {% for category in sorted_categories %}
-        {% assign category_name = category[0] %}
-        {% assign category_id = category_name | slugify %}
-        {% assign category_url = '/categories/#' | append: category_id %}
-        <a class="category-link{% if page.categories contains category_name %} active{% endif %}" href="{{ category_url | relative_url }}">
-          <span>{{ category_name }}</span>
-          <span class="category-count">{{ category[1].size }}</span>
-        </a>
+      {% for group in site.data.sidebar_categories %}
+        {% assign group_count = 0 %}
+        {% for child in group.children %}
+          {% assign child_posts = site.categories[child.category] %}
+          {% assign child_count = child_posts | size %}
+          {% assign group_count = group_count | plus: child_count %}
+        {% endfor %}
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-heading">
+            <span>{{ group.name }}</span>
+            <span class="category-count">{{ group_count }}</span>
+          </div>
+          <div class="sidebar-category-children">
+            {% for child in group.children %}
+              {% assign child_posts = site.categories[child.category] %}
+              {% assign child_count = child_posts | size %}
+              {% assign child_query = child.category | uri_escape %}
+              {% assign child_url = '/posts/?category=' | append: child_query %}
+              <a class="category-child-link{% if page.categories contains child.category %} active{% endif %}" href="{{ child_url | relative_url }}" data-category-filter="{{ child.category }}">
+                <span>{{ child.name }}</span>
+                <span class="category-count">{{ child_count }}</span>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
       {% endfor %}
     </nav>
 

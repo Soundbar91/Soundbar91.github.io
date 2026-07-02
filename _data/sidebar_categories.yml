@@ -1,0 +1,20 @@
+- name: CS
+  children:
+    - name: 컴퓨터 구조
+      category: Computer Architecture
+    - name: 운영체제
+      category: OS
+    - name: 네트워크
+      category: Network
+    - name: DB
+      category: DB
+    - name: 인프라
+      category: Infra
+- name: PS
+  children:
+    - name: 알고리즘
+      category: Algorithm
+- name: Daily
+  children:
+    - name: 회고
+      category: Daily
