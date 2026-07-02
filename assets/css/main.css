@@ -244,12 +244,18 @@ main.container {
   text-align: left;
 }
 
-.intro-title {
+.intro-content h1 {
   color: var(--heading);
   font-size: 2.6rem;
   font-weight: 850;
   line-height: 1.18;
   letter-spacing: 0;
+}
+
+.intro-content p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-top: 1.25rem;
 }
 
 .post-list {
@@ -616,7 +622,6 @@ main.container {
   padding: 2rem 0;
   font-size: 0.875rem;
   color: var(--text-muted);
-  border-top: 1px solid var(--border);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -1044,7 +1049,7 @@ main.container {
     padding: 5rem 0;
   }
 
-  .intro-title {
+  .intro-content h1 {
     font-size: 2rem;
   }
 
@@ -1078,7 +1083,7 @@ main.container {
     white-space: nowrap;
   }
 
-  .intro-title {
+  .intro-content h1 {
     font-size: 1.75rem;
   }
 }
