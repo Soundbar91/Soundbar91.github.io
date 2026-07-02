@@ -18,9 +18,9 @@ excerpt: "돌다리도 두드리고 건너기"
     `중복되는 수열을 여러 번 출력하면 안되며,` 조건이 처음에는 까다로웠다. 
     집합에 넣을 생각도 해봤지만, 그렇게 하면 백트래킹의 의미가 없다고 생각했다. 
     
-    ```java
-    int preValue = 0;
-    ```
+```java
+int preValue = 0;
+```
     
     이전에 나온 숫자를 저장해서 다른 경우에면 수열 탐색을 할 수 있도록 해야 했다. 
 
@@ -31,9 +31,9 @@ excerpt: "돌다리도 두드리고 건너기"
     
     계속 틀린 이유를 찾지 못하다가, `S == 0` 인 경우에 아무것도 선택하지 않는 경우와 부분수열의 합으로 구한 경우가 같이 존재하기 때문에 하나 빼야했다. 
     
-    ```java
-    if (S == 0) result--;
-    ```
+```java
+if (S == 0) result--;
+```
     
     [문제 풀이 코드](https://github.com/Soundbar91/algorithmStudy/tree/main/%EB%B0%B1%EC%A4%80/Silver/1182.%E2%80%85%EB%B6%80%EB%B6%84%EC%88%98%EC%97%B4%EC%9D%98%E2%80%85%ED%95%A9)
     
@@ -43,13 +43,13 @@ excerpt: "돌다리도 두드리고 건너기"
     이를 이용하면, 배열에 `[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]` 을 저장하고 숫자를 선택한 경우와 선택하지 않는 경우를 재귀로 호출하면 된다. 
     여기까지는 오케이하고 코드를 작성하고 제출했지만 예외가 터진다. 그렇다. 입력한 번째의 수에 해당하는 줄어드는 수가 없을 수 있으며, try-catch로 예외를 잡고 `-1` 을 출력해야 한다. 
     
-    ```java
-    try {
-             System.out.print(result.get(N - 1));
-         } catch (IndexOutOfBoundsException e) {
-             System.out.print(-1);
-         }
-    ```
+```java
+try {
+         System.out.print(result.get(N - 1));
+     } catch (IndexOutOfBoundsException e) {
+         System.out.print(-1);
+     }
+```
     
     [문제 풀이 코드](https://github.com/Soundbar91/algorithmStudy/tree/main/%EB%B0%B1%EC%A4%80/Gold/1174.%E2%80%85%EC%A4%84%EC%96%B4%EB%93%9C%EB%8A%94%E2%80%85%EC%88%98)
     
@@ -63,9 +63,9 @@ excerpt: "돌다리도 두드리고 건너기"
     
     그리고 2차원 배열의 인덱스를 변수 하나로 표현할 수 있는 방법을 알게 됐다. 
     
-    ```java
-    int x = i / M, y = i % M;
-    ```
+```java
+int x = i / M, y = i % M;
+```
     
     재귀로 넘겨줄 때 좌표를 어떻게 넘겨줄지 고민을 많이 했는데, 명쾌한 해답이 있었다. 해당 방법은 다른 문제를 풀 때도 유용하게 사용했다. 
     
@@ -90,10 +90,10 @@ excerpt: "돌다리도 두드리고 건너기"
     스도쿠는 잘 알려졌기 때문에 검증 조건에 대해 생각하는 것은 어렵지 않았다. 
     분명 어렵지 않았는데 어려웠다. 가로와 세로를 체크하는 메소드는 단순하지만, 3x3은 어떻게 검사를 해야할지 감이 잡히지 않았다. 
     
-    ```java
-    int start = (x / 3) * 3;
-    int end = (y / 3) * 3;
-    ```
+```java
+int start = (x / 3) * 3;
+int end = (y / 3) * 3;
+```
     
     대단하다.. 이렇게 얻은 좌표는 3x3 블럭의 시작 좌표이다. 그리고 탐색을 하면 된다. 
     
@@ -104,9 +104,9 @@ excerpt: "돌다리도 두드리고 건너기"
     유명한 문제이다다다. 스도쿠와 비슷하게 한가지 검증 코드를 작성하지 못했다. 
     대각선 판별이다. 처음에는 1차원 boolean 배열을 사용해서 같은 열에 놓여 있는지 확인 했는데, 대각선을 생각하니 해당 방법으로는 검증할 방법이 없다고 생각했다. 
     
-    ```java
-    Math.abs(cols[i] - cols[row]) == row - i
-    ```
+```java
+Math.abs(cols[i] - cols[row]) == row - i
+```
     
     boolean 배열을 int 배열로 변경 후, 열에 몇 번재 행의 체스를 뒀는지 저장한다. 그리고 `행의 차와 열의 차가 같음` 이면 같은 대각선에 존재한다고 한다. 
     
@@ -116,13 +116,13 @@ excerpt: "돌다리도 두드리고 건너기"
     
     숫자가 다 만들어지면 검사 크기를 늘려가면서 절반으로 나눴을 때 똑같은지 검사했다. 하지만 메모리 초과가 발생..
     
-    ```java
-    for (int i = 1; i <= str.length() / 2; i++) {
-         String left = str.substring(str.length() - i);
-         String right = str.substring(str.length() - 2 * i, str.length() - i);
-          if (left.equals(right)) return false;
-    }
-    ```
+```java
+for (int i = 1; i <= str.length() / 2; i++) {
+     String left = str.substring(str.length() - i);
+     String right = str.substring(str.length() - 2 * i, str.length() - i);
+      if (left.equals(right)) return false;
+}
+```
     
     해당 코드를 처음 봤을 때는 읽기 어렵게 생겼다고 느껴졌다. 메커니즘은 간단하지만, 내가 생각한 방식의 반대 방향이였다. 
     

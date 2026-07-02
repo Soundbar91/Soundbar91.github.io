@@ -25,12 +25,16 @@ excerpt: "커넥션 셔틀"
     -   AutoConfiguration
         -   애플리케이션 구동과정에서 Configuration 파일을 빈으로 등록되는 과정에 있다.
         -   이 과정에서 DataSource가 빈으로 등록이 된다.
-        ![](/assets/images/velog/73tSOjwg53tiHP0Ezysw21-img.png)
+
+![](/assets/images/velog/73tSOjwg53tiHP0Ezysw21-img.png)
+
         -   DataSourceConfiguration 추상 클래스 내부에는 Hikari 클래스가 선언되있다.
         -   해당 클래스는 Configuration 어노테이션을 가지고 있어, 컴포넌트 스캔 과정에서 빈으로 등록이 된다.
         -   내부에는 dataSource이라는 메소드가 존재하며, 반환값으로 HikariDataSource를 반환한다.
         -   파라미터를 보면 DataSourceProperties 클래스가 존재하고, 내부는 다음과 같다.
-        ![](/assets/images/velog/3qXVbpHSVun0vgp3b9szu0-img.png)
+
+![](/assets/images/velog/3qXVbpHSVun0vgp3b9szu0-img.png)
+
         -   ConfigurationProperties 어노테이션은 .properties 혹은 .yml 파일에 있는 설정을 객체에 바인딩할 수 있게 해주는 어노테이션이다.
         -   prefix 설정을 통해 파일의 설정의 공통 접두사를 설정할 수 있다.
         -   클래스 필드를 통해 설정 파일의 값을 가져올 수 있다.

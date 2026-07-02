@@ -32,16 +32,16 @@ excerpt: "상? 하? 좌? 우? 대각선까지"
     
     DFS를 많이 안 사용하다가 데여버린 문제였다. DFS로 사이클이 존재하는지만 판별하고, 존재하면 값을 추가하면 된다. 
     
-    ```java
-    public static void solve(int cur, int end) {
-        if (!visited[nums[cur]]) {
-            visited[nums[cur]] = true;
-            solve(nums[cur], end);
-            visited[nums[cur]] = false;
-        }
-        if (nums[cur] == end) list.add(end);
+```java
+public static void solve(int cur, int end) {
+    if (!visited[nums[cur]]) {
+        visited[nums[cur]] = true;
+        solve(nums[cur], end);
+        visited[nums[cur]] = false;
     }
-    ```
+    if (nums[cur] == end) list.add(end);
+}
+```
     
     [문제 풀이 코드](https://github.com/Soundbar91/algorithmStudy/tree/main/%EB%B0%B1%EC%A4%80/Gold/2668.%E2%80%85%EC%88%AB%EC%9E%90%EA%B3%A0%EB%A5%B4%EA%B8%B0)
     
@@ -55,35 +55,35 @@ excerpt: "상? 하? 좌? 우? 대각선까지"
     
     왼쪽 상단의 꼭짓점과 오른쪽 하단의 꼭짓점을 기준으로 반복문을 돌려서 범위 내에 벽이 있는지 검사했다. 
     
-    ```java
-    public static boolean check(int Sx, int Sy, int Ex, int Ey) {
-        for (int i = Sx; i <= Ex; i++)
-            if (map[i][Sy] == 1) return false;
-        for (int i = Sy; i <= Ey; i++)
-            if (map[Sx][i] == 1) return false;
-        for (int i = Ex; i >= Sx; i--)
-            if (map[i][Ey] == 1) return false;
-        for (int i = Ey; i >= Sy; i--)
-            if (map[Ex][i] == 1) return false;
-        return true;
-    }
-    ```
+```java
+public static boolean check(int Sx, int Sy, int Ex, int Ey) {
+    for (int i = Sx; i <= Ex; i++)
+        if (map[i][Sy] == 1) return false;
+    for (int i = Sy; i <= Ey; i++)
+        if (map[Sx][i] == 1) return false;
+    for (int i = Ex; i >= Sx; i--)
+        if (map[i][Ey] == 1) return false;
+    for (int i = Ey; i >= Sy; i--)
+        if (map[Ex][i] == 1) return false;
+    return true;
+}
+```
     
     이렇게 해도 풀리긴 했는데, 찾아보니 벽의 좌표를 리스트에 저장하고 움직인 직사각형 범위에 벽이 있는지 확인하는 방법도 있었다. 
     
-    ```java
-    public static boolean check(int x, int y) {
-        for (int[] coordinate: coordinates) {
-            if (coordinate[0] >= x && coordinate[0] <= x + H - 1 &&
-                coordinate[1] >= y && coordinate[1] <= y + W - 1)
-                return false;
-        }
-    
-        return true;
+```java
+public static boolean check(int x, int y) {
+    for (int[] coordinate: coordinates) {
+        if (coordinate[0] >= x && coordinate[0] <= x + H - 1 &&
+            coordinate[1] >= y && coordinate[1] <= y + W - 1)
+            return false;
     }
-    ```
+
+    return true;
+}
+```
     
-    ![](/assets/images/velog/0cfdde5c-cacc-4f03-a365-eeca501c0421-image.png)
+![](/assets/images/velog/0cfdde5c-cacc-4f03-a365-eeca501c0421-image.png)
     
     확실히 성능이 향상됨을 확인할 수 있었다. 
     
@@ -93,69 +93,69 @@ excerpt: "상? 하? 좌? 우? 대각선까지"
     
     2차원 배열을 선언해서 국가가 어느 연합에 들어가는지 저장했다. 연합에 해당하는 국가들의 인구를 다 합치고, 반복문으로 순회를 해서 인구 이동하는 방식으로 구현했다. 
     
-    ```java
-    public static void movePeople() {
-        List < List < int[] >> unionLists = new ArrayList < > ();
-        for (int i = 0; i < index; i++) unionLists.add(new ArrayList < > ());
-    
-        int[] total = new int[index];
-        for (int i = 1; i < index; i++) {
-            int sum = 0;
-    
-            for (int j = 0; j < N; j++) {
-                for (int k = 0; k < N; k++) {
-                    if (union[j][k] == i) {
-                        unionLists.get(i).add(new int[] {
-                            j,
-                            k
-                        });
-                        sum += map[j][k];
-                    }
+```java
+public static void movePeople() {
+    List < List < int[] >> unionLists = new ArrayList < > ();
+    for (int i = 0; i < index; i++) unionLists.add(new ArrayList < > ());
+
+    int[] total = new int[index];
+    for (int i = 1; i < index; i++) {
+        int sum = 0;
+
+        for (int j = 0; j < N; j++) {
+            for (int k = 0; k < N; k++) {
+                if (union[j][k] == i) {
+                    unionLists.get(i).add(new int[] {
+                        j,
+                        k
+                    });
+                    sum += map[j][k];
                 }
             }
-            total[i] = sum / unionLists.get(i).size();
         }
-    
-        for (int i = 1; i < index; i++) {
-            List < int[] > unionList = unionLists.get(i);
-    
-            for (int[] union: unionList) {
-                int x = union[0];
-                int y = union[1];
-    
-                map[x][y] = total[i];
-            }
+        total[i] = sum / unionLists.get(i).size();
+    }
+
+    for (int i = 1; i < index; i++) {
+        List < int[] > unionList = unionLists.get(i);
+
+        for (int[] union: unionList) {
+            int x = union[0];
+            int y = union[1];
+
+            map[x][y] = total[i];
         }
     }
-    
-    ```
+}
+
+```
     
     정답이 됐긴 했지만, 더 찾아보니 별도로 연합 배열을 관리할 필요가 없었다. 한 번 탐색할 때 인구 이동도 같이 진행해주면 됐다. 
     
-    ```java
-    public static int solve() {
-        int day = 0;
-        while (true) {
-            visited = new boolean[N][N];
-            boolean move = false;
-    
-            for (int i = 0; i < N; i++) {
-                for (int j = 0; j < N; j++) {
-                    if (!visited[i][j]) {
-                        int sum = bfs(i, j);
-                        if (list.size() > 1) {
-                            move = true;
-                            movePeople(sum);
-                        }
+```java
+public static int solve() {
+    int day = 0;
+    while (true) {
+        visited = new boolean[N][N];
+        boolean move = false;
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (!visited[i][j]) {
+                    int sum = bfs(i, j);
+                    if (list.size() > 1) {
+                        move = true;
+                        movePeople(sum);
                     }
                 }
             }
-    
-            if (!move) return day;
-            day++;
         }
+
+        if (!move) return day;
+        day++;
     }
-    ```
+}
+```
     
     [문제 풀이 코드](https://github.com/Soundbar91/algorithmStudy/tree/main/%EB%B0%B1%EC%A4%80/Gold/16234.%E2%80%85%EC%9D%B8%EA%B5%AC%E2%80%85%EC%9D%B4%EB%8F%99)
     

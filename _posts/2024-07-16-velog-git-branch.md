@@ -19,6 +19,7 @@ excerpt: "목둔, 브랜치 만들기"
 git branch <생성할 브랜치 이름> <분기점이 되는 브랜치 이름>
 git checkout -b <생성할 브랜치 이름>
 ```
+
 - `git branch`은 브랜치 생성만 한다.
     - <분기점이 되는 브랜치 이름>을 생략하면 현재 위치하고 있는 브랜치에서 브랜치가 생성된다.
 - `git checkout -b`은 브랜치 생성과 동시에 해당 브랜치로 이동한다.
@@ -65,6 +66,7 @@ git push <원격 저장소> <올릴 브랜치 이름>
  `feature/test` 에서 `develop` 로 PR를 만드는 방법은 다음과 같다. 
  
 ![](/assets/images/velog/9b9c79f8-c324-407f-9edd-79f27808d794-image.png)
+
 - 좌측 아이콘 `Pull Request` 을 누르고,  `Create Pull Request...` 을 누른다.
 
 ![](/assets/images/velog/ad870f67-0d9e-4c8d-9672-d1ac35e394cc-image.png)
@@ -94,15 +96,17 @@ git push <원격 저장소> <올릴 브랜치 이름>
 - feature 브랜치는 원격 저장소에서 무조건 관리할 필요가 없기 때문에, 삭제할 수요가 있다면 `Delete branch` 버튼을 눌러서 원격 저장소에서 feature 브랜치를 삭제한다.
     - 로컬에 있는 feature 브랜치는 삭제가 안된다.
     - 로컬에 있는 브랜치를 삭제하기 위해서는 다음 명령어를 사용한다.
-    ```
-    git branch -d <삭제할 브랜치 이름>
-    ```
+
+```
+git branch -d <삭제할 브랜치 이름>
+```
     
     - 삭제하기 위해서는 현재 위치하고 있는 브랜치가 삭제할 브랜치가 아닌 다른 브랜치이어야 한다.
     - 원격에 있는 브랜치를 삭제하는 명령어는 다음과 같다.
-    ```
-    git push origin --delete <삭제할 브랜치 이름>
-    ```
+
+```
+git push origin --delete <삭제할 브랜치 이름>
+```
     
 
 ## 마무리

@@ -192,4 +192,5 @@ public ResponseEntity<MemberResponse> findMyInfo(HttpServletRequest request) {
 ```
 
 ## 테스트 결과
+
 ![](/assets/images/velog/02b3e0e1-47d1-4557-a5e6-8dc4a3700ff6-image.png)

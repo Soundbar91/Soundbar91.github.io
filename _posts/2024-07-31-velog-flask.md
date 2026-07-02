@@ -50,6 +50,7 @@ vscode의 터미널에서 해당 명령어를 입력하면 flask 패키지가 �
 
 
 vscode에 들어오면, 탐색기에 파일을 확인할 수 있고 터미널을 열어서 가상환경에 들어왔는지 확인한다. (env)가 붙어 있으면 설정이 잘 된 것이다. 
+
 ![](/assets/images/velog/19c03bf0-dc93-4f28-bc0d-18b95d388db4-image.png)
 
 ![](/assets/images/velog/ad5e9c49-1601-477c-b071-4041a2d73dbe-image.png)

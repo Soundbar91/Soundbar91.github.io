@@ -5,6 +5,7 @@ categories:
   - Java
 excerpt: "직렬화에서 예외를 핸들링해보자"
 ---
+
 ```java
 public record RequestCreateReservation(
     @NotBlank(message = "이름은 필수 입력사항 입니다.")
@@ -25,6 +26,7 @@ public record RequestCreateReservation(
 -   만약, DateTimeFormat 어노테이션에 설정된 패턴대로 데이터가 들어오지 않으면 어떻게 될까?
 
 ![](/assets/images/velog/2c8947aa-3fc4-4a19-a8bc-53282d73be4a-image.png)
+
 ![](/assets/images/velog/12b68b7f-e8f9-4a24-a1a9-344db3a34e0a-image.png)
 
 -   다음과 같은 예외가 발생한다.

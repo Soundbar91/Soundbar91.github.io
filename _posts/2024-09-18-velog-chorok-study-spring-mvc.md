@@ -17,9 +17,12 @@ excerpt: "Spring MVC 테스트"
 ### 테스트
 
 -   `resources` 에는 다음과 같은 html 파일들이 제공됐다.
+
 ![](/assets/images/velog/FRkYUkTxskL74Kd90ebA6K-img.png)
+
 -   진행할 테스트 코드는 다음과 같다.
     -   `http://localhost:8080/` 로 `GET` 요청이 들어오면 HTTP 상태 코드 `200` 을 받아야 한다.
+
 ```java
 @Test
 void responseIndexPage() {
@@ -31,12 +34,16 @@ void responseIndexPage() {
     assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
 }
 ```
+
 -   현재 상태에서 테스트 코드를 돌리면 테스트가 통과되지 않는다.
     -   `static` 디렉토리와 `templates` 디렉토리에 `index.html` 이 존재하지 않는다.
     -   이는 welcome page가 존재하지 않음을 뜻하고, 스프링은 welcome page를 넘겨줄 수 없기 때문에 예외를 발생시킨다.
-    ![](/assets/images/velog/YZSAuLERdbIr2VpQQ0MYfK-img.png)
+
+![](/assets/images/velog/YZSAuLERdbIr2VpQQ0MYfK-img.png)
+
 -   이를 해결하기 위해서 `static` 디렉토리에 있는 `hi.html` 의 이름을 `index.html` 로 변경하였고, 테스트 코드를 실행했다.
     -   정상적으로 테스트가 통과됨을 알 수 있다.
+
 ![](/assets/images/velog/AOtgRWCtRkwpkR2xYJLnWK-img.png)
 
 ## Static page
@@ -51,6 +58,7 @@ void responseIndexPage() {
 
 -   진행할 테스트 코드는 다음과 같다.
     -   `http://localhost:8080/static.html` 로 `GET` 요청이 들어오면 HTTP 상태 코드 `200` 을 받아야 한다.
+
 ```java
 @Test
 void responseStaticPage() {
@@ -62,20 +70,26 @@ void responseStaticPage() {
     assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
 }
 ```
+
 -   현재 상태에서 테스트 코드를 돌리면 테스트가 통과되지 않는다.
     -   제공된 static.html은 templates 디렉토리 하위에 존재한다.
     -   스프링은 정적 페이지 요청이 들어오면 /public → /static 순서대로 탐색을 한다.
     -   templates 디렉토리는 탐색 범위에 포함되지 않기 때문에 스프링은 해당 파일을 찾을 수 없다.
+
 ![](/assets/images/velog/kEvfO76bPKfw5uoHiX5B70-img.png)
+
 -   이를 해결하기 위해서는 두 가지 방법이 있다.
     -   templates 디렉토리 하위에 존재하는 static.html를 static 디렉토리로 옮긴다.
         -   정상적으로 테스트가 통과됨을 알 수 있다.
-    ![](/assets/images/velog/urQKywKMiY7FsK6McTbjxk-img.png)
+
+![](/assets/images/velog/urQKywKMiY7FsK6McTbjxk-img.png)
+
     -   WebMvcConfigurer을 구현한다.
         -   WebMvcConfigurer은 스프링에서 제공하는 인터페이스이다.
         -   이를 구현해서 개발자는 MVC 구성정보를 제어할 수 있다.
         -   인터셉터 추가, 뷰 리졸버 그리고 리소스 핸들링 등을 제어할 수 있다.
         -   여기서는 정적 페이지, 즉 리소스 핸들링을 해야한다.
+
 ```java
 @Configuration
 @EnableWebMvc
@@ -93,7 +107,8 @@ public class WebConfig implements WebMvcConfigurer {
      -   addResourceHandler : 어떤 요청에서 핸들링을 할 것인지 지정한다.
        -   addResourceLocations : 핸들링할 리소스 경로를 지정한다.
             
-       ![](/assets/images/velog/u76X3lkM1VtbBPd7oqxGqk-img.png)
+![](/assets/images/velog/u76X3lkM1VtbBPd7oqxGqk-img.png)
+
        -   테스트가 정상적으로 통과됨을 알 수 있다.
 
 ## Template Engine
@@ -108,6 +123,7 @@ public class WebConfig implements WebMvcConfigurer {
 -   진행할 테스트 코드는 다음과 같다.
     -   `http://localhost:8080/hello?name=Brie` 로 `GET` 요청이 들어오면 HTTP 상태 코드 `200` 을 받아야 한다.
     -   또한, 응답 메시지에 `Hello, Brie!` 라는 문구가 포함되야 한다.
+
 ```java
 @Test
 void responseTemplatesHelloPage() {
@@ -120,6 +136,7 @@ void responseTemplatesHelloPage() {
     assertThat(response.asString()).contains("Hello, Brie!");
 }
 ```
+
 -   테스트 코드를 만족시키기 위해 다음과 같이 진행했다.
     -   `/hello` 경로로 들어오는 요청을 받을 컨트롤러 메소드를 생성한다.
     -   `?name=Brie` 에서 `Brie` 값을 추출하기 위해서 `RequestParam` 어노테이션을 활용한다.
@@ -137,6 +154,7 @@ void responseTemplatesHelloPage() {
     -   메소드 반환형의 경우 `String` 으로 선언해야 한다
         -   반환 값으로는 넘겨줄 뷰의 이름을 작성하면 된다.
         -   스프링은 넘겨줄 뷰의 이름을 보고, 해당 뷰에 Model 객체를 넘겨준다.
+
 ```java
 @GetMapping("/hello")
 public String world(
@@ -146,6 +164,7 @@ public String world(
     return "hello";
 }
 ```
+
 -   정상적으로 테스트가 통과됨을 알 수 있다.
 -   ![](/assets/images/velog/kjt8Yx7tEo4VK1PgznFStK-img.png)
 
@@ -158,6 +177,7 @@ public String world(
 -   진행할 테스트 코드는 다음과 같다.
     -   `http://localhost:8080/json` 으로 `GET` 요청이 들어오면 HTTP 상태 코드 `200` 을 받아야 한다.
     -   또한 응답 메시지에 Name은 Brown, Age는 20이 포함되야 한다.
+
 ```java
 @Test
 void responseJson() {
@@ -171,6 +191,7 @@ void responseJson() {
     assertThat(response.as(Person.class).getAge()).isEqualTo(20);
 }
 ```
+
 -   테스트 코드를 만족시키기 위해 다음과 같이 진행했다.
     -   Person 클래스는 제공된 코드를 사용했다.
     -   `/json` 경로로 들어오는 요청을 받을 컨트롤러 메소드를 생성한다.

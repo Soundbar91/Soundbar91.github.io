@@ -51,7 +51,7 @@ CPU 스케줄링 알고리즘을 비교하는 기준은 여러가지가 있다.
         
     - 다음 작업 시간을 알 방법이 없기 때문에 구현이 어려움 → 과거의 기록을 통해 예측
         
-        ![image.png](/assets/images/SJF.png)
+![image.png](/assets/images/SJF.png)
         
         - tn : n번째 실제 측정된 CPU 버스트 시간
         - τn : n번째 예측값
@@ -72,7 +72,7 @@ CPU 스케줄링 알고리즘을 비교하는 기준은 여러가지가 있다.
         
     - 시분할의 크기에 따라 성능이 좌지우지
         
-        ![image.png](/assets/images/RR.png)
+![image.png](/assets/images/RR.png)
         
         - 짧게 잡으면 컨텍스트 스위치기 빈번하게 발생하여 성능 저하
         - 길게 잡으면 작업 처리량이 줄어듦
@@ -86,7 +86,7 @@ CPU 스케줄링 알고리즘을 비교하는 기준은 여러가지가 있다.
     - 이를 해결하기 위해 오랫동안 대기하는 작업들의 우선순위를 점진적으로 증가시키는 에이징 기법이 존재
 - MLQ(Multi-Level Queue)
     
-    ![image.png](/assets/images/MLQ.png)
+![image.png](/assets/images/MLQ.png)
     
     - 대기 큐에 우선순위가 높은 작업을 찾기 위해 O(n) 검색이 필요할 수 있음
     - 우선순위에 따라 큐를 배치하여 작업을 처리한다면, 검색 비용을 개선할 수 있음
@@ -95,7 +95,7 @@ CPU 스케줄링 알고리즘을 비교하는 기준은 여러가지가 있다.
     - 큐별로 CPU 시간을 일정 비율로 분배할 수 있음 (상위 큐 80, 하위 큐 20)
 - MLFQ(Multi-Level Feedback Queue)
     
-    ![image.png](/assets/images/MLFQ.png)
+![image.png](/assets/images/MLFQ.png)
     
     - MLQ와 달리, 작업들이 큐들 사이를 이동하는 것을 허용
     - 프로세스가 들어오면 가장 높은 우선순위 큐에 진입

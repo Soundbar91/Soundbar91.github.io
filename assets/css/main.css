@@ -402,23 +402,29 @@ main.container {
 
 .post-content {
   line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .post-content h2 {
   font-size: 1.7rem;
   font-weight: 700;
   color: var(--heading);
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--border);
+}
+
+.post-content > h2:first-child {
+  margin-top: 0;
 }
 
 .post-content h3 {
   font-size: 1.35rem;
   font-weight: 600;
   color: var(--heading);
-  margin-top: 2rem;
+  margin-top: 2.25rem;
   margin-bottom: 0.75rem;
 }
 
@@ -431,17 +437,21 @@ main.container {
 }
 
 .post-content p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.1rem;
 }
 
 .post-content ul,
 .post-content ol {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   padding-left: 1.5rem;
 }
 
 .post-content li {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
+}
+
+.post-content li > p {
+  margin-bottom: 0.6rem;
 }
 
 .post-content blockquote {
@@ -459,15 +469,20 @@ main.container {
 }
 
 .post-content img {
+  display: block;
+  width: auto;
+  max-width: min(100%, 860px);
   border-radius: 8px;
-  margin: 1.5rem 0;
+  margin: 2rem auto;
   box-shadow: var(--shadow);
 }
 
 .post-content table {
   width: 100%;
+  display: block;
+  overflow-x: auto;
   border-collapse: collapse;
-  margin: 1.5rem 0;
+  margin: 1.75rem 0;
   font-size: 0.9rem;
 }
 
@@ -519,7 +534,7 @@ main.container {
   line-height: 1.6;
   background: var(--code-bg);
   border: 1px solid var(--border);
-  margin-bottom: 1.5rem;
+  margin: 1.25rem 0 1.75rem;
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
@@ -532,7 +547,7 @@ main.container {
 
 .highlight {
   border-radius: 8px;
-  margin-bottom: 1.5rem;
+  margin: 1.25rem 0 1.75rem;
 }
 
 .highlight pre {

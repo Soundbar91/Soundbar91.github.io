@@ -62,10 +62,13 @@ excerpt: "교육의 끝은 프로젝트의 시작"
 ### 프로젝트 사이트
 이번 회고 프로젝트는 과거와 달리 개인 깃허브 저장소에서 진행한다. 그래서 [프로젝트 전용 저장소](https://github.com/Soundbar91/retrospect-project)를 만들었다.
 또한, 프로젝트 진행 과정에서 고민의 흔적, 학습한 내용 그리고 기타 등등 기록을 남기고 싶어서 [노션 페이지](https://soundbar91.notion.site/Retrospect-Project-f88ed9e690ce480ca348c6914b9103af?pvs=4)도 만들었다. 기록을 남기면서 다시 한 번 정리하는 게 개인적으로 머리속에 잘 남았기 때문에 많이 애용할 예정이다. 
+
 <img src="https://velog.velcdn.com/images/soundbar91/post/a9d6050f-9b7d-4f39-8b9e-72ea033e2caf/image.png" width="80%" height="50%">
 
 ### 프로젝트 흐름도
+
 <img src="https://velog.velcdn.com/images/soundbar91/post/be7a9e7a-56af-440b-8c76-0c50567c060c/image.png" width="100%" height="50%">
+
 초기에 구상해본 프로젝트 흐름도이다. <br> 메인 서버는 채점을 제외한 모든 비즈니스 로직을 수행하며, Spring Boot로 구현할 예정이다. <br> 데이터베이스의 경우 교육 기간 동안 사용한 MySQL를 사용하며, 유저 정보와 알고리즘 문제 데이터 등을 저장한다. <br> 채점 서버의 경우 유저가 제출한 코드를 채점하는 로직을 담당하며, 아마도 Docker를 통해 구현할 것 같다. 아직 이 부분은 학습이 안됐다..
 
 ## 마무리

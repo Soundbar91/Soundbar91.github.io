@@ -6,7 +6,9 @@ categories:
 excerpt: "꺾이더라도 키보드에서 손을 떼지 말 것"
 ---
 ## 서론
+
 ![](/assets/images/velog/8bb4aed7-7cf2-406b-a61f-b97ad251f654-image.png)
+
 2주차에는 다음과 같은 기능을 구현하는 것을 목표로 삼았다. 다만 진행 과정에서 관리자 기능의 우선 순위를 내리는 방향으로 결정을 했다. 최근 자주 접속하고 있는 [사이트](https://swexpertacademy.com/main/code/userProblem/userProblemList.do)에서도 사용자들이 문제를 만들 수 있는 기능이 있는데, 별도의 제약이 없어 보였다. 
 진행하고 있는 프로젝트의 주제인 `함께 만드는 알고리즘 저지 사이트`에서 제약을 두게 되면 함께 만드는 것이 아닌 거 같다는 생각이 들었다. 또한, 관리자 기능 이외의 다른 로직(채점 서버)에 집중하고 싶다는 생각이 들어 우선 순위를 낮췄다.
 
@@ -23,6 +25,7 @@ public enum Category {
     private final String categoryName;
 }
 ```
+
 <img src="https://velog.velcdn.com/images/soundbar91/post/a7b989fd-be10-41f0-8dba-bdc7f9fb42de/image.png" width="100%" height="50%">
 
 문제가 삭제되지 않으면 게시판도 삭제되지 않기 때문에, 게시글도 게시판과 동일하게 구현했다.
@@ -141,9 +144,9 @@ private ResponseEntity < Map > responseBody(HttpEntity < Map < String, Object >>
     - Http 응답 메시지의 자료형이다.
     - 반환값이 해당 자료형으로 나오기 때문에 반환값을 저장할 변수의 자료형과 일치시켜줘야 한다.
     
-    ```java
-    ResponseEntity<Map> response = responseBody(request);
-    ```    
+```java
+ResponseEntity<Map> response = responseBody(request);
+```
 
 #### HTTP Response 받기
 

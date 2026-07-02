@@ -21,8 +21,10 @@ excerpt: "데이터베이스 다이어트"
     - 컬럼의 순서가 상관이 없어야 함
 
 ![](/assets/images/velog/eff20be6-8112-47a6-8150-fb260d06c328-image.png)
+
 - 멘티들이라는 컬럼에는 여러 개의 값이 존재
 - 해당 테이블에 제 1정규화를 적용하면 다음과 같음
+
 ![](/assets/images/velog/98d2fd3d-a36e-42be-b09e-4a7167f7e456-image.png)
 
 ### 제 2정규화

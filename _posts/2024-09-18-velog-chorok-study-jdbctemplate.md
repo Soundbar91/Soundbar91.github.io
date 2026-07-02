@@ -60,20 +60,20 @@ public <T> T queryForObject(String sql, RowMapper<T> rowMapper, @Nullable Object
     - RowMapper
         - row 단위로 ResultSet의 row를 매핑하기 위해 JdbcTemplate에서 사용하는 함수형 인터페이스
         
-        ![](/assets/images/velog/OShIt9bJdnNYnjCeKQk9b1-img.png)
+![](/assets/images/velog/OShIt9bJdnNYnjCeKQk9b1-img.png)
         
         - rowNum : 반환된 ResultSet의 순서
         
-        ```java
-        private final RowMapper<Customer> actorRowMapper = (resultSet, rowNum) - > {
-            Customer customer = new Customer(
-                resultSet.getLong("id"),
-                resultSet.getString("first_name"),
-                resultSet.getString("last_name")
-            );
-            return customer;
-        };
-        ```
+```java
+private final RowMapper<Customer> actorRowMapper = (resultSet, rowNum) - > {
+    Customer customer = new Customer(
+        resultSet.getLong("id"),
+        resultSet.getString("first_name"),
+        resultSet.getString("last_name")
+    );
+    return customer;
+};
+```
         
         - 다음과 같이 작성할 수 있다.
             - <T>의 값에는 매핑할 클래스를 작성한다.
@@ -173,7 +173,7 @@ jdbcTemplate.update(connection - > {
     - PreparedStatementCreator
         - 함수형 인터페이스이다.
         
-        ![](/assets/images/velog/RuT9KBOSkVkbcipo68Vh8K-img.png)
+![](/assets/images/velog/RuT9KBOSkVkbcipo68Vh8K-img.png)
         
         - PreparedStatement를 생성하는 메소드를 가지고 있다.
     - PreparedStatement
@@ -181,22 +181,22 @@ jdbcTemplate.update(connection - > {
         - 코드의 가독성이 좋다.
         - 메소드를 이용해서 직접 쿼리에 바인딩을 해야하기 때문에 코드량이 많아진다.
         
-        ```java
-        PreparedStatement prepareStatement(String sql, String columnNames[])
-        ```
+```java
+PreparedStatement prepareStatement(String sql, String columnNames[])
+```
         
         - columnNames에는 자동 생성되는 PK의 목록을 지정할 떄 사용한다.
     - KeyHolder
         
-        ```java
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        ```
+```java
+KeyHolder keyHolder = new GeneratedKeyHolder();
+```
         
         - 생성된 PK의 값을 담고 있는 클래스이다.
         
-        ```java
-        keyHolder.getKey().longValue();
-        ```
+```java
+keyHolder.getKey().longValue();
+```
         
         - getKey() 메소드를 통해 생성된 PK를 반환받을 수 있다.
         - getKey() 메소드의 반환값은 `Number` 클래스이며,  XXValue() 메소드를 통해 원하는 자료형으로 캐스팅할 수 있다.

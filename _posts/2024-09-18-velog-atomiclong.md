@@ -71,7 +71,8 @@ public static class Counter {
 -   int 자료형으로 변수를 사용할려 했으나, 스레드간 공유가 되지 않아 Atomic 클래스를 사용하라고 문구가 나왔다.
 -   순수 증감 연산자만 사용해서 테스트를 진행하고 싶기 때문에, Counter라는 클래스를 선언해서 테스트를 진행했다.
 -   테스트 결과는 다음과 같다.  
-   ![](/assets/images/velog/fbefde57-164d-4b47-b634-47c299f38846-image.png)
+
+![](/assets/images/velog/fbefde57-164d-4b47-b634-47c299f38846-image.png)
 
     -   스레드의 개수가 적을 때는 통과를 하지만, 스레드의 개수가 증가하면 점점 기댓값보다 적은 값이 나온다.
 
@@ -83,7 +84,8 @@ public synchronized void increment() {
 
 -   `synchronized` 키워드를 사용해서 테스트를 진행해봤다.
 -   테스트 결과는 다음과 같다.  
-   ![](/assets/images/velog/f108d87e-e4b0-4061-a61a-d71ca833b66b-image.png)
+
+![](/assets/images/velog/f108d87e-e4b0-4061-a61a-d71ca833b66b-image.png)
 
     -   성능 저하가 발생한다고 했는데, 테스트 코드 실행시간에서 큰 차이가 나지 않았다.
     -   테스트 코드를 잘못 작성한건가..?

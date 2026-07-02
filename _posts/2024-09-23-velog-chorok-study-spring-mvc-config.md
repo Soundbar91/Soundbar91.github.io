@@ -67,4 +67,5 @@ public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) 
 ```
 
 ## 테스트
+
 ![](/assets/images/velog/25565687-d062-4a5d-8bfe-53f785e08c3f-image.png)

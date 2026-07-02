@@ -7,7 +7,10 @@ excerpt: "시작이 반이다"
 ---
 ## 서론
 0주차에 진행한 설계를 바탕으로 1주차에는 기능 구현을 진행했다. 
-<img src="https://velog.velcdn.com/images/soundbar91/post/26f487cd-abae-466d-89af-3ea3807a6382/image.png" width="100%" height="50%"> 일정 상으로는 회원가입, 로그인, 로그아웃 그리고 회원탈퇴까지 구현하기로 했다. 하지만, 구현을 하다보니 시간이 남아 다음 주차에 예정되있던 문제 관련 기능을 1주차에 구현을 했다. 
+
+<img src="https://velog.velcdn.com/images/soundbar91/post/26f487cd-abae-466d-89af-3ea3807a6382/image.png" width="100%" height="50%">
+
+일정 상으로는 회원가입, 로그인, 로그아웃 그리고 회원탈퇴까지 구현하기로 했다. 하지만, 구현을 하다보니 시간이 남아 다음 주차에 예정되있던 문제 관련 기능을 1주차에 구현을 했다. 
 
 ## 본론
 ### 스키마 생성
@@ -145,12 +148,12 @@ public class User {
         - @Column의  columnDefinition 옵션을 통해서도 가능
     - 이메일과 비밀번호만 넘겨주면 나머지 값에는 기본값이 들어 갈 것이라고 기대를 했지만 다음과 같은 결과가 나왔다.
     
-    ![](/assets/images/velog/0ed9b0c6-35e7-43f7-8fe4-48ddd8b7ba46-image.png)
+![](/assets/images/velog/0ed9b0c6-35e7-43f7-8fe4-48ddd8b7ba46-image.png)
     
     - 분명 email과 password만 넘겨줬는데, exp,level 그리고 role도 같이 sql문에 포함되서 넘어갔다.
     - 데이터베이스를 확인해보니 다음과 같이 저장되어 있었다.
     
-    ![](/assets/images/velog/62255d52-bea2-4b01-993c-b1b75f260c76-image.png)
+![](/assets/images/velog/62255d52-bea2-4b01-993c-b1b75f260c76-image.png)
     
     - role에는 null, exp와 level은 0이 들어가 있었다. 왜 일까 생각해보니 다음과 같은 결론이 나왔다.
         - exp와 level의 경우 기본 타입이기 때문에 entity 생성 당시 기본 초기값으로 0.0과 0을 갖는다.
@@ -164,18 +167,19 @@ public class User {
             - true로 설정하면 Insert 시점에 컬럼을 포함시키지 않는다.
             - 세 컬럼에 모두 적용을 했고, 다음과 같은 쿼리가 날라갔다.
             
-            ![](/assets/images/velog/8d090ca5-e427-4ea2-8675-8d9a9b83b981-image.png)
+![](/assets/images/velog/8d090ca5-e427-4ea2-8675-8d9a9b83b981-image.png)
 
             
             - 데이터베이스를 확인하니 다음과 같이 정상적으로 기본값이 저장됐음을 확인할 수 있었다.
             
-            ![](/assets/images/velog/5f8edbbb-2b4f-4f8c-89b1-9cd6e45de444-image.png)
+![](/assets/images/velog/5f8edbbb-2b4f-4f8c-89b1-9cd6e45de444-image.png)
             
             - 이것도 안되면 @Query를 사용해서 직접 쿼리를 작성해야하나 생각이 들었다.
 
 최종으로 user 테이블 생성 쿼리는 다음과 같다. 
 
 ![](/assets/images/velog/efad0f6e-1a4a-4fc9-90fd-3f7c5ea1db89-image.png)
+
 ### 인터셉트 빈 등록
 
 ```java

@@ -5,7 +5,9 @@ categories:
   - Spring
 excerpt: "요청과 응답은 어떤 과정으로 처리가 될까"
 ---
+
 ![](/assets/images/velog/3240da8c-e55d-4c91-a6f1-97832338d698-image.png)
+
 - Request
     - 해당 요청을 내장 톰캣이 받는다.
     - 동적 처리가 필요한 요청인 경우, 톰캣은 서블릿으로 등록된 디스패처 서블릿에게 해당 요청을 보낸다.
