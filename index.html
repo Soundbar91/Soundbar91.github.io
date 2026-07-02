@@ -2,53 +2,6 @@
 layout: default
 title: Home
 ---
-<section class="home">
-  <ul class="post-list">
-    {% for post in paginator.posts %}
-      <li class="post-item">
-        <h2 class="post-item-title">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h2>
-        <div class="post-item-meta">
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y년 %m월 %d일" }}</time>
-          {% if post.categories.size > 0 %}
-            &middot;
-            {% for category in post.categories %}
-              {{ category }}{% unless forloop.last %}, {% endunless %}
-            {% endfor %}
-          {% endif %}
-        </div>
-        {% if post.excerpt %}
-          <p class="post-item-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-
-  {% if paginator.total_pages > 1 %}
-  <nav class="pagination" aria-label="페이지 네비게이션">
-    {% if paginator.previous_page %}
-      <a class="pagination-control" href="{{ paginator.previous_page_path | relative_url }}">이전으로</a>
-    {% else %}
-      <span class="pagination-control disabled" aria-disabled="true">이전으로</span>
-    {% endif %}
-
-    {% for page in (1..paginator.total_pages) %}
-      {% if page == paginator.page %}
-        <span class="pagination-number current" aria-current="page">{{ page }}</span>
-      {% elsif page == 1 %}
-        <a class="pagination-number" href="{{ '/' | relative_url }}">{{ page }}</a>
-      {% else %}
-        {% assign page_path = site.paginate_path | replace: ':num', page %}
-        <a class="pagination-number" href="{{ page_path | relative_url }}">{{ page }}</a>
-      {% endif %}
-    {% endfor %}
-
-    {% if paginator.next_page %}
-      <a class="pagination-control" href="{{ paginator.next_page_path | relative_url }}">다음으로</a>
-    {% else %}
-      <span class="pagination-control disabled" aria-disabled="true">다음으로</span>
-    {% endif %}
-  </nav>
-  {% endif %}
+<section class="intro">
+  <h1 class="intro-title">안녕하세요. 신관규입니다</h1>
 </section>
