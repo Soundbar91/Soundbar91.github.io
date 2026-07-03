@@ -1,9 +1,9 @@
 ---
-title: 표현 계층
+title: 응용 계층
 date: 2026-07-03
 categories:
   - Network
-excerpt: 표현 계층에 대해서 알아보자
+excerpt: 응용 계층에 대해서 알아보자
 ---
 ## 정의
 
