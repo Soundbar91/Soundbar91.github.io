@@ -16,6 +16,53 @@
     });
   }
 
+  var snapScrollLinks = Array.prototype.slice.call(document.querySelectorAll('.home-snap .portfolio-scroll'));
+  if (snapScrollLinks.length > 0) {
+    var snapScrollContainer = document.querySelector('.home-snap .site-content');
+    var revealScrollControlsTimer;
+
+    function hideScrollControls() {
+      document.body.classList.add('scroll-control-hidden');
+    }
+
+    function revealScrollControls() {
+      window.clearTimeout(revealScrollControlsTimer);
+      revealScrollControlsTimer = window.setTimeout(function() {
+        document.body.classList.remove('scroll-control-hidden');
+      }, 120);
+    }
+
+    snapScrollLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        hideScrollControls();
+        window.clearTimeout(revealScrollControlsTimer);
+        revealScrollControlsTimer = window.setTimeout(function() {
+          document.body.classList.remove('scroll-control-hidden');
+        }, 850);
+      });
+    });
+
+    if (snapScrollContainer) {
+      ['wheel', 'touchmove'].forEach(function(eventName) {
+        snapScrollContainer.addEventListener(eventName, hideScrollControls, { passive: true });
+      });
+
+      window.addEventListener('keydown', function(event) {
+        var scrollKeys = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '];
+        if (scrollKeys.indexOf(event.key) !== -1) {
+          hideScrollControls();
+        }
+      });
+
+      snapScrollContainer.addEventListener('scroll', function() {
+        hideScrollControls();
+        revealScrollControls();
+      });
+
+      snapScrollContainer.addEventListener('scrollend', revealScrollControls);
+    }
+  }
+
   var postList = document.getElementById('post-list');
   if (postList) {
     var items = Array.prototype.slice.call(postList.querySelectorAll('.post-item'));

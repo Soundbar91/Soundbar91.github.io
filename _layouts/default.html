@@ -19,7 +19,7 @@
     })();
   </script>
 </head>
-<body>
+<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
   {% include header.html %}
   <div class="site-content">
     <main class="container">
