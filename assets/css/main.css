@@ -555,6 +555,57 @@ main.container {
   margin-top: 1.2rem;
 }
 
+.portfolio-career-copy {
+  max-width: 76rem;
+}
+
+.portfolio-career-title {
+  margin-bottom: 1.8rem;
+  color: var(--heading);
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.portfolio-career-detail {
+  max-width: 76rem;
+  margin-top: 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--border);
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.85;
+  word-break: keep-all;
+}
+
+.portfolio-career-heading {
+  margin-bottom: 1rem;
+}
+
+.portfolio-career-date {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--link);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.portfolio-career-detail ul {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 1.1rem;
+}
+
+.portfolio-career-detail li::marker {
+  color: var(--link);
+}
+
+.portfolio-career-detail strong {
+  color: var(--heading);
+  font-weight: 800;
+}
+
 .portfolio-focus-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
