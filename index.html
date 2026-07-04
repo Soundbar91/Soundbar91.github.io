@@ -3,7 +3,7 @@ layout: default
 title: Home
 body_class: home-snap
 ---
-<section class="portfolio-hero" aria-labelledby="portfolio-title">
+<section class="portfolio-hero" id="top" aria-labelledby="portfolio-title">
   <div class="portfolio-hero-copy">
     <h1 class="portfolio-hero-title" id="portfolio-title">Introduce</h1>
     <p class="portfolio-hero-description" id="portfolio-intro">
@@ -15,9 +15,11 @@ body_class: home-snap
     </p>
   </div>
 
-  <a class="portfolio-scroll" href="#about">
-    <span class="portfolio-scroll-icon">↓</span>
-  </a>
+  <nav class="portfolio-section-nav" aria-label="섹션 이동">
+    <a class="portfolio-scroll is-down" href="#about" aria-label="다음 섹션으로 이동">
+      <span class="portfolio-scroll-icon">↓</span>
+    </a>
+  </nav>
 </section>
 
 <section class="portfolio-section portfolio-about" id="about" aria-labelledby="about-title">
@@ -36,9 +38,14 @@ body_class: home-snap
       </p>
     </div>
   </div>
-  <a class="portfolio-scroll" href="#focus" aria-label="다음 섹션으로 이동">
-    <span class="portfolio-scroll-icon">↓</span>
-  </a>
+  <nav class="portfolio-section-nav" aria-label="섹션 이동">
+    <a class="portfolio-scroll is-up" href="#top" aria-label="이전 섹션으로 이동">
+      <span class="portfolio-scroll-icon">↑</span>
+    </a>
+    <a class="portfolio-scroll is-down" href="#focus" aria-label="다음 섹션으로 이동">
+      <span class="portfolio-scroll-icon">↓</span>
+    </a>
+  </nav>
 </section>
 
 <section class="portfolio-section portfolio-focus" id="focus" aria-labelledby="focus-title">
@@ -61,9 +68,14 @@ body_class: home-snap
       <p>운영체제, 네트워크, 자료구조와 알고리즘을 실제 개발 문제와 연결해 이해하려고 합니다.</p>
     </article>
   </div>
-  <a class="portfolio-scroll" href="#experience" aria-label="다음 섹션으로 이동">
-    <span class="portfolio-scroll-icon">↓</span>
-  </a>
+  <nav class="portfolio-section-nav" aria-label="섹션 이동">
+    <a class="portfolio-scroll is-up" href="#about" aria-label="이전 섹션으로 이동">
+      <span class="portfolio-scroll-icon">↑</span>
+    </a>
+    <a class="portfolio-scroll is-down" href="#experience" aria-label="다음 섹션으로 이동">
+      <span class="portfolio-scroll-icon">↓</span>
+    </a>
+  </nav>
 </section>
 
 <section class="portfolio-section portfolio-projects" id="experience" aria-labelledby="projects-title">
@@ -90,9 +102,14 @@ body_class: home-snap
       </article>
     </div>
   </div>
-  <a class="portfolio-scroll" href="#writing" aria-label="다음 섹션으로 이동">
-    <span class="portfolio-scroll-icon">↓</span>
-  </a>
+  <nav class="portfolio-section-nav" aria-label="섹션 이동">
+    <a class="portfolio-scroll is-up" href="#focus" aria-label="이전 섹션으로 이동">
+      <span class="portfolio-scroll-icon">↑</span>
+    </a>
+    <a class="portfolio-scroll is-down" href="#writing" aria-label="다음 섹션으로 이동">
+      <span class="portfolio-scroll-icon">↓</span>
+    </a>
+  </nav>
 </section>
 
 <section class="portfolio-section portfolio-writing" id="writing" aria-labelledby="writing-title">
@@ -112,4 +129,9 @@ body_class: home-snap
       </article>
     {% endfor %}
   </div>
+  <nav class="portfolio-section-nav" aria-label="섹션 이동">
+    <a class="portfolio-scroll is-up" href="#experience" aria-label="이전 섹션으로 이동">
+      <span class="portfolio-scroll-icon">↑</span>
+    </a>
+  </nav>
 </section>
