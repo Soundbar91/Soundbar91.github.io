@@ -32,6 +32,11 @@
       }, 120);
     }
 
+    function hideThenRevealScrollControls() {
+      hideScrollControls();
+      revealScrollControls();
+    }
+
     snapScrollLinks.forEach(function(link) {
       link.addEventListener('click', function() {
         hideScrollControls();
@@ -79,19 +84,18 @@
       }
 
       ['wheel', 'touchmove'].forEach(function(eventName) {
-        snapScrollContainer.addEventListener(eventName, hideScrollControls, { passive: true });
+        snapScrollContainer.addEventListener(eventName, hideThenRevealScrollControls, { passive: true });
       });
 
       window.addEventListener('keydown', function(event) {
         var scrollKeys = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '];
         if (scrollKeys.indexOf(event.key) !== -1) {
-          hideScrollControls();
+          hideThenRevealScrollControls();
         }
       });
 
       snapScrollContainer.addEventListener('scroll', function() {
-        hideScrollControls();
-        revealScrollControls();
+        hideThenRevealScrollControls();
       });
 
       snapScrollContainer.addEventListener('scrollend', revealScrollControls);
