@@ -51,17 +51,53 @@
       var snapSections = Array.prototype.slice.call(document.querySelectorAll('.home-snap .portfolio-hero, .home-snap .portfolio-section'));
       var activeSection = null;
 
+      function replaceHash(section) {
+        if (!section || !section.id || window.location.hash === '#' + section.id) return;
+        window.history.replaceState(null, '', window.location.pathname + window.location.search + '#' + section.id);
+      }
+
       function activateSectionNav(section) {
         if (!section || activeSection === section) return;
         activeSection = section;
+        replaceHash(section);
         snapSections.forEach(function(item) {
           var nav = item.querySelector('.portfolio-section-nav');
           if (nav) nav.classList.toggle('is-active', item === section);
         });
       }
 
+      function scrollToHashSection(behavior) {
+        if (!window.location.hash) return;
+        var targetId = window.location.hash.slice(1);
+        if (!targetId) return;
+        var targetSection = document.getElementById(targetId);
+        if (!targetSection || snapSections.indexOf(targetSection) === -1) return;
+
+        snapScrollContainer.scrollTo({
+          top: targetSection.offsetTop,
+          behavior: behavior || 'auto'
+        });
+        activateSectionNav(targetSection);
+      }
+
+      function resetToInitialSection() {
+        var initialSection = document.getElementById('introduce') || snapSections[0];
+        if (!initialSection) return;
+
+        if (window.location.hash !== '#' + initialSection.id) {
+          window.history.replaceState(null, '', window.location.pathname + window.location.search + '#' + initialSection.id);
+        }
+
+        snapScrollContainer.scrollTo({
+          top: initialSection.offsetTop,
+          behavior: 'auto'
+        });
+        activateSectionNav(initialSection);
+      }
+
       if (snapSections.length > 0) {
         activateSectionNav(snapSections[0]);
+        window.requestAnimationFrame(resetToInitialSection);
 
         if ('IntersectionObserver' in window) {
           var sectionObserver = new IntersectionObserver(function(entries) {
@@ -82,6 +118,10 @@
           });
         }
       }
+
+      window.addEventListener('hashchange', function() {
+        scrollToHashSection('smooth');
+      });
 
       ['wheel', 'touchmove'].forEach(function(eventName) {
         snapScrollContainer.addEventListener(eventName, hideThenRevealScrollControls, { passive: true });
