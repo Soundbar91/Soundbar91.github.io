@@ -771,10 +771,15 @@ main.container {
   max-width: 76rem;
 }
 
+.portfolio-additional {
+  padding-top: clamp(2.5rem, 4vw, 4rem);
+  padding-bottom: clamp(4.5rem, 5vw, 5.5rem);
+}
+
 .portfolio-additional-title {
   max-width: none;
   margin-top: 0;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.35rem;
   color: var(--heading);
   font-size: clamp(2.1rem, 4vw, 3.6rem);
   font-weight: 900;
@@ -784,11 +789,11 @@ main.container {
 
 .portfolio-additional-groups {
   display: grid;
-  gap: 1.8rem;
+  gap: 1.25rem;
 }
 
 .portfolio-additional-group h3 {
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.65rem;
   color: var(--heading);
   font-size: clamp(1.25rem, 2vw, 1.55rem);
 }
@@ -800,11 +805,11 @@ main.container {
 
 .portfolio-additional-body ul {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.3rem;
   padding-left: 1.1rem;
   color: var(--text-secondary);
   font-size: clamp(1rem, 1.35vw, 1.08rem);
-  line-height: 1.75;
+  line-height: 1.6;
   word-break: keep-all;
 }
 
@@ -815,6 +820,36 @@ main.container {
 .portfolio-additional-group strong {
   color: var(--heading);
   font-weight: 800;
+}
+
+.portfolio-tech-stack dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 2.5rem;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.35vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.portfolio-tech-stack dl div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.portfolio-tech-stack dt {
+  color: var(--heading);
+  font-weight: 800;
+}
+
+.portfolio-tech-stack dt::after {
+  content: " :";
+}
+
+.portfolio-tech-stack dd {
+  margin: 0;
 }
 
 .post-list {
@@ -1650,6 +1685,10 @@ main.container {
   }
 
   .portfolio-section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-tech-stack dl {
     grid-template-columns: 1fr;
   }
 
