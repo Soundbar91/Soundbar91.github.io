@@ -366,12 +366,24 @@ main.container {
 
 .portfolio-hero {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  display: flex;
   align-items: center;
-  gap: clamp(3rem, 7vw, 7rem);
   min-height: calc(100vh - 6.5rem);
   padding: clamp(3rem, 7vw, 6rem) 0 7rem;
+}
+
+.portfolio-hero-copy {
+  max-width: 76rem;
+}
+
+.portfolio-hero-title {
+  margin-bottom: 1.8rem;
+  color: var(--heading);
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0;
+  animation: heroTextIn 0.65s ease-out both;
 }
 
 .portfolio-kicker,
@@ -383,103 +395,64 @@ main.container {
   text-transform: uppercase;
 }
 
-.portfolio-hero h1 {
-  margin-top: 0.8rem;
-  color: var(--heading);
-  font-size: clamp(4rem, 12vw, 9.5rem);
-  font-weight: 900;
-  line-height: 0.92;
-  letter-spacing: 0;
-}
-
 .portfolio-hero-description {
-  max-width: 42rem;
-  margin-top: 1.75rem;
+  max-width: 76rem;
+  margin-top: 0;
   color: var(--text-secondary);
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
   line-height: 1.85;
   word-break: keep-all;
 }
 
-.portfolio-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 2rem;
+.portfolio-hero-intro,
+.portfolio-hero-detail {
+  display: block;
 }
 
-.portfolio-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.9rem;
-  padding: 0.75rem 1.1rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+.portfolio-hero-intro {
   color: var(--heading);
-  font-weight: 750;
-  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.65;
+  white-space: nowrap;
+  animation: heroTextIn 0.65s ease-out 0.12s both;
 }
 
-.portfolio-action:hover {
-  transform: translateY(-2px);
-  border-color: var(--link);
-  color: var(--link);
+.portfolio-hero-detail {
+  max-width: 76rem;
+  margin-top: 1.4rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--border);
+  animation: heroTextIn 0.65s ease-out 0.24s both;
 }
 
-.portfolio-action.primary {
-  border-color: var(--heading);
-  background: var(--heading);
-  color: var(--bg);
+.portfolio-hero-detail span {
+  display: block;
+  white-space: nowrap;
 }
 
-.portfolio-action.primary:hover {
-  border-color: var(--link);
-  background: var(--link);
-  color: #fff;
+.portfolio-hero-description strong {
+  color: var(--heading);
+  font-weight: 800;
 }
 
-.portfolio-hero-visual {
-  display: flex;
-  justify-content: flex-end;
+@keyframes heroTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.8rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.portfolio-code-panel {
-  width: min(100%, 34rem);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--bg-secondary);
-  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
-}
-
-[data-theme="dark"] .portfolio-code-panel {
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
-}
-
-.portfolio-code-header {
-  display: flex;
-  gap: 0.45rem;
-  padding: 0.9rem 1rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.portfolio-code-header span {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
-  background: var(--text-muted);
-  opacity: 0.65;
-}
-
-.portfolio-code-panel pre {
-  margin: 0;
-  padding: clamp(1.1rem, 3vw, 1.7rem);
-  overflow-x: auto;
-  color: var(--text);
-  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
-  font-size: clamp(0.82rem, 1.2vw, 0.98rem);
-  line-height: 1.8;
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-hero-title,
+  .portfolio-hero-intro,
+  .portfolio-hero-detail {
+    animation: none;
+  }
 }
 
 .portfolio-scroll {
@@ -1506,14 +1479,16 @@ main.container {
   }
 
   .portfolio-hero {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
     min-height: auto;
     padding: 4rem 0 6.5rem;
   }
 
-  .portfolio-hero-visual {
-    justify-content: flex-start;
+  .portfolio-hero-intro {
+    white-space: normal;
+  }
+
+  .portfolio-hero-detail span {
+    white-space: normal;
   }
 
   .portfolio-scroll {
@@ -1583,22 +1558,6 @@ main.container {
 
   .intro-content h1 {
     font-size: 1.75rem;
-  }
-
-  .portfolio-hero h1 {
-    font-size: 3.5rem;
-  }
-
-  .portfolio-actions {
-    flex-direction: column;
-  }
-
-  .portfolio-action {
-    width: 100%;
-  }
-
-  .portfolio-code-panel pre {
-    font-size: 0.78rem;
   }
 
   .portfolio-scroll-icon {
