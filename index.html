@@ -86,65 +86,58 @@ body_class: home-snap
     <a class="portfolio-scroll is-up" href="#about" aria-label="이전 섹션으로 이동">
       <span class="portfolio-scroll-icon">↑</span>
     </a>
-    <a class="portfolio-scroll is-down" href="#experience" aria-label="다음 섹션으로 이동">
+    <a class="portfolio-scroll is-down" href="#projects" aria-label="다음 섹션으로 이동">
       <span class="portfolio-scroll-icon">↓</span>
     </a>
   </nav>
 </section>
 
-<section class="portfolio-section portfolio-projects" id="experience" aria-labelledby="projects-title">
-  <div class="portfolio-section-label">Experience</div>
-  <div class="portfolio-section-grid">
-    <div>
-      <h2 id="projects-title">측정하고 개선한 경험을 기록합니다.</h2>
-    </div>
-    <div class="portfolio-timeline">
-      <article class="portfolio-timeline-item">
-        <span class="portfolio-timeline-date">Performance</span>
-        <h3>복합 인덱스를 활용한 API 성능 개선</h3>
-        <p>API 모니터링과 실행 계획을 확인하고, 병목이 발생하는 쿼리를 분석한 과정을 정리했습니다.</p>
-      </article>
-      <article class="portfolio-timeline-item">
-        <span class="portfolio-timeline-date">Infrastructure</span>
-        <h3>로그 롤링과 S3 업로드</h3>
-        <p>운영 환경에서 로그를 안정적으로 다루기 위한 구조와 자동화 흐름을 학습했습니다.</p>
-      </article>
-      <article class="portfolio-timeline-item">
-        <span class="portfolio-timeline-date">Study</span>
-        <h3>네트워크와 운영체제 정리</h3>
-        <p>웹 요청 흐름, TCP/IP 계층, 스케줄링, 동기화, 메모리 관리 같은 기반 지식을 정리하고 있습니다.</p>
-      </article>
-    </div>
+<section class="portfolio-section portfolio-writing" id="projects" aria-labelledby="writing-title">
+  <div class="portfolio-project-writeups">
+    <h2 class="portfolio-project-writeups-title" id="writing-title">Projects</h2>
+    <article class="portfolio-project-writeup">
+      <header class="portfolio-project-writeup-header">
+        <h3 class="portfolio-project-title">
+          <a href="https://koreatech.in/" target="_blank" rel="noopener noreferrer">코인 - 한기대 커뮤니티</a>
+          <span class="portfolio-project-date">2024.10 - 2026.08</span>
+        </h3>
+        <div class="portfolio-project-links" aria-label="프로젝트 관련 링크">
+          <a href="https://koreatech.in/" target="_blank" rel="noopener noreferrer">Web</a>
+          <a href="https://play.google.com/store/apps/details?id=in.koreatech.koin&amp;hl=ko" target="_blank" rel="noopener noreferrer">Android</a>
+          <a href="https://apps.apple.com/bh/app/%EC%BD%94%EC%9D%B8-koreatech-in-%ED%95%9C%EA%B8%B0%EB%8C%80-%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0/id1500848622" target="_blank" rel="noopener noreferrer">iOS</a>
+          <a href="https://github.com/BCSDLab/KOIN_API_V2" target="_blank" rel="noopener noreferrer">Backend Github</a>
+        </div>
+        <p>식단, 버스, 공지사항, 주변 상점 등 대학 생활 정보를 제공하는 한국기술교육대학교 플랫폼</p>
+      </header>
+      <div class="portfolio-project-contributions">
+        <ul>
+          <li><strong>DAU 1,300 규모 플랫폼</strong>의 백엔드 개발 및 운영을 담당했습니다.</li>
+          <li>키워드 알림 API의 동기 처리를 비동기/배치 전송 구조로 개선하여 <strong>P95 응답시간을 41.3초에서 1.43초</strong>로 단축했습니다.</li>
+          <li>셔틀버스/생협 사업장 시간표 관리 백오피스를 구축해 반복 DB 수정/배포 업무를 개선했습니다.</li>
+          <li>리프레시 토큰 저장 구조를 플랫폼별 세션 단위로 개선해 멀티 플랫폼 환경의 자동 로그인 해제 문제를 해결했습니다.</li>
+          <li>Jenkins 기반 CI/CD를 GitHub Actions 마이그레이션 및 DB Private IP 전환으로 <strong>연간 275 USD</strong>의 비용을 절감했습니다.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="portfolio-project-writeup">
+      <header class="portfolio-project-writeup-header">
+        <h3 class="portfolio-project-title">
+          <span>Polaris - 대학 입시 성적 산출 S/W</span>
+          <span class="portfolio-project-date">2025.07 - 2025.12</span>
+        </h3>
+      </header>
+      <div class="portfolio-project-contributions">
+        <ul>
+          <li>생성형 AI를 활용하여 <strong>C#, .NET</strong> 기반으로 구현된 입학전형관리시스템의 성적 산출 모듈을 <strong>NestJS/Next.js</strong> 기반으로 1인 풀스택 개발 진행</li>
+          <li>다중 컬럼 확장 통계를 활용하여 학생 정보 조회 쿼리의 실행 시간을 <strong>84.72초에서 2.65초</strong>로 개선</li>
+          <li>프롬프트 개선을 통해 학교별 대입 성적 로직 개발 시간을 <strong>4시간에서 1시간 내외</strong>로 감소</li>
+        </ul>
+      </div>
+    </article>
   </div>
   <nav class="portfolio-section-nav" aria-label="섹션 이동">
     <a class="portfolio-scroll is-up" href="#focus" aria-label="이전 섹션으로 이동">
-      <span class="portfolio-scroll-icon">↑</span>
-    </a>
-    <a class="portfolio-scroll is-down" href="#writing" aria-label="다음 섹션으로 이동">
-      <span class="portfolio-scroll-icon">↓</span>
-    </a>
-  </nav>
-</section>
-
-<section class="portfolio-section portfolio-writing" id="writing" aria-labelledby="writing-title">
-  <div class="portfolio-section-label">Writing</div>
-  <div class="portfolio-writing-header">
-    <h2 id="writing-title">최근 작성한 글</h2>
-    <a href="{{ '/posts/' | relative_url }}">전체 글 보기</a>
-  </div>
-  <div class="portfolio-posts">
-    {% for post in site.posts limit: 3 %}
-      <article class="portfolio-post-card">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        {% if post.excerpt %}
-          <p>{{ post.excerpt | strip_html | truncate: 110 }}</p>
-        {% endif %}
-      </article>
-    {% endfor %}
-  </div>
-  <nav class="portfolio-section-nav" aria-label="섹션 이동">
-    <a class="portfolio-scroll is-up" href="#experience" aria-label="이전 섹션으로 이동">
       <span class="portfolio-scroll-icon">↑</span>
     </a>
   </nav>
