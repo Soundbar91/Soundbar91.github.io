@@ -99,17 +99,10 @@
         var targetSection = document.getElementById(targetId);
         if (!targetSection || snapSections.indexOf(targetSection) === -1) return;
 
-        if (isSnapScrollEnabled()) {
-          snapScrollContainer.scrollTo({
-            top: targetSection.offsetTop,
-            behavior: behavior || 'auto'
-          });
-        } else {
-          window.scrollTo({
-            top: targetSection.offsetTop,
-            behavior: behavior || 'auto'
-          });
-        }
+        snapScrollContainer.scrollTo({
+          top: targetSection.offsetTop,
+          behavior: behavior || 'auto'
+        });
         activateSectionNav(targetSection);
       }
 
@@ -122,17 +115,10 @@
           window.history.replaceState(null, '', window.location.pathname + window.location.search + '#' + initialSection.id);
         }
 
-        if (isSnapScrollEnabled()) {
-          snapScrollContainer.scrollTo({
-            top: initialSection.offsetTop,
-            behavior: 'auto'
-          });
-        } else {
-          window.scrollTo({
-            top: 0,
-            behavior: 'auto'
-          });
-        }
+        snapScrollContainer.scrollTo({
+          top: initialSection.offsetTop,
+          behavior: 'auto'
+        });
         activateSectionNav(initialSection);
       }
 
