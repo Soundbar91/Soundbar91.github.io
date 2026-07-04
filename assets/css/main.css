@@ -555,16 +555,19 @@ main.container {
   margin-top: 1.2rem;
 }
 
-.portfolio-about {
+.portfolio-about,
+.portfolio-focus {
   display: flex;
   align-items: center;
 }
 
-.portfolio-career-copy {
+.portfolio-career-copy,
+.portfolio-experience-copy {
   max-width: 76rem;
 }
 
-.portfolio-career-title {
+.portfolio-career-title,
+.portfolio-experience-title {
   max-width: none;
   margin-top: 0;
   margin-bottom: 1.8rem;
@@ -575,7 +578,8 @@ main.container {
   letter-spacing: 0;
 }
 
-.portfolio-career-detail {
+.portfolio-career-detail,
+.portfolio-experience-detail {
   max-width: 76rem;
   margin-top: 0;
   color: var(--text-secondary);
@@ -584,11 +588,13 @@ main.container {
   word-break: keep-all;
 }
 
-.portfolio-career-heading {
+.portfolio-career-heading,
+.portfolio-experience-heading {
   margin-bottom: 1.4rem;
 }
 
-.portfolio-career-company {
+.portfolio-career-company,
+.portfolio-experience-company {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -596,70 +602,55 @@ main.container {
 }
 
 .portfolio-career-company a,
-.portfolio-career-date {
+.portfolio-career-date,
+.portfolio-experience-company a,
+.portfolio-experience-date {
   color: var(--heading);
 }
 
-.portfolio-career-company a:hover {
+.portfolio-career-company a:hover,
+.portfolio-experience-company a:hover {
   color: var(--link);
 }
 
-.portfolio-career-date {
+.portfolio-career-date,
+.portfolio-experience-date {
   font-size: 0.95rem;
   font-weight: 700;
 }
 
-.portfolio-career-body {
+.portfolio-career-body,
+.portfolio-experience-body {
   padding-left: 1rem;
   border-left: 2px solid var(--border);
 }
 
-.portfolio-career-body ul {
+.portfolio-career-body ul,
+.portfolio-experience-body ul {
   display: grid;
   gap: 0.75rem;
   padding-left: 1.1rem;
 }
 
-.portfolio-career-body li::marker {
+.portfolio-career-body li::marker,
+.portfolio-experience-body li::marker {
   color: var(--link);
 }
 
-.portfolio-career-detail strong {
+.portfolio-career-detail strong,
+.portfolio-experience-detail strong {
   color: var(--heading);
   font-weight: 800;
 }
 
-.portfolio-focus-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: 2.5rem;
-  border: 1px solid var(--border);
-  background: var(--border);
+.portfolio-career-detail strong a,
+.portfolio-experience-detail strong a {
+  color: inherit;
 }
 
-.portfolio-focus-item {
-  min-height: 18rem;
-  padding: clamp(1.3rem, 2.5vw, 2rem);
-  background: var(--bg);
-}
-
-.portfolio-focus-item span {
-  display: block;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-weight: 800;
-}
-
-.portfolio-focus-item h3 {
-  margin-top: 2.2rem;
-}
-
-.portfolio-focus-item p {
-  margin-top: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.75;
-  word-break: keep-all;
+.portfolio-career-detail strong a:hover,
+.portfolio-experience-detail strong a:hover {
+  color: var(--link);
 }
 
 .portfolio-timeline {
@@ -1589,13 +1580,8 @@ main.container {
   }
 
   .portfolio-section-grid,
-  .portfolio-focus-list,
   .portfolio-posts {
     grid-template-columns: 1fr;
-  }
-
-  .portfolio-focus-item {
-    min-height: auto;
   }
 
   .portfolio-writing-header {
