@@ -361,7 +361,7 @@ main.container {
 }
 
 .home-snap .site-footer {
-  scroll-snap-align: end;
+  display: none;
 }
 
 .portfolio-hero {
