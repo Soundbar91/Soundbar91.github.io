@@ -267,23 +267,32 @@ main.container {
 }
 
 .theme-toggle {
-  margin-top: 2.5rem;
-  width: 2.75rem;
-  height: 2.75rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg-secondary);
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
   cursor: pointer;
-  color: var(--text-secondary);
+  color: var(--text-muted);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .theme-toggle:hover {
-  border-color: var(--link);
   color: var(--link);
+  transform: translateY(-1px);
+}
+
+.theme-toggle svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 [data-theme="light"] .icon-moon,
@@ -1637,15 +1646,6 @@ main.container {
 
   body.menu-open .menu-toggle span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
-  }
-
-  .theme-toggle {
-    position: absolute;
-    top: 1.05rem;
-    right: 4.25rem;
-    margin-top: 0;
-    width: 2.4rem;
-    height: 2.4rem;
   }
 
   .site-content {
