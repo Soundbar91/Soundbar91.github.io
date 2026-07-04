@@ -16,12 +16,32 @@
     });
   }
 
+  var profileLink = document.querySelector('.home-snap .profile');
+  if (profileLink) {
+    profileLink.addEventListener('click', function(event) {
+      if (!window.matchMedia('(max-width: 900px)').matches) return;
+
+      var profileUrl = new URL(profileLink.href, window.location.href);
+      if (profileUrl.pathname !== window.location.pathname) return;
+
+      event.preventDefault();
+      document.body.classList.remove('menu-open');
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      window.scrollTo({
+        top: 0,
+        behavior: 'auto'
+      });
+    });
+  }
+
   var snapScrollLinks = Array.prototype.slice.call(document.querySelectorAll('.home-snap .portfolio-scroll'));
   if (snapScrollLinks.length > 0) {
     var snapScrollContainer = document.querySelector('.home-snap .site-content');
     var revealScrollControlsTimer;
+    var snapMediaQuery = window.matchMedia('(min-width: 901px)');
 
     function hideScrollControls() {
+      if (!snapMediaQuery.matches) return;
       document.body.classList.add('scroll-control-hidden');
     }
 
@@ -51,7 +71,12 @@
       var snapSections = Array.prototype.slice.call(document.querySelectorAll('.home-snap .portfolio-hero, .home-snap .portfolio-section'));
       var activeSection = null;
 
+      function isSnapScrollEnabled() {
+        return snapMediaQuery.matches;
+      }
+
       function replaceHash(section) {
+        if (!isSnapScrollEnabled()) return;
         if (!section || !section.id || window.location.hash === '#' + section.id) return;
         window.history.replaceState(null, '', window.location.pathname + window.location.search + '#' + section.id);
       }
@@ -67,20 +92,29 @@
       }
 
       function scrollToHashSection(behavior) {
+        if (!isSnapScrollEnabled()) return;
         if (!window.location.hash) return;
         var targetId = window.location.hash.slice(1);
         if (!targetId) return;
         var targetSection = document.getElementById(targetId);
         if (!targetSection || snapSections.indexOf(targetSection) === -1) return;
 
-        snapScrollContainer.scrollTo({
-          top: targetSection.offsetTop,
-          behavior: behavior || 'auto'
-        });
+        if (isSnapScrollEnabled()) {
+          snapScrollContainer.scrollTo({
+            top: targetSection.offsetTop,
+            behavior: behavior || 'auto'
+          });
+        } else {
+          window.scrollTo({
+            top: targetSection.offsetTop,
+            behavior: behavior || 'auto'
+          });
+        }
         activateSectionNav(targetSection);
       }
 
       function resetToInitialSection() {
+        if (!isSnapScrollEnabled()) return;
         var initialSection = document.getElementById('introduce') || snapSections[0];
         if (!initialSection) return;
 
@@ -88,18 +122,27 @@
           window.history.replaceState(null, '', window.location.pathname + window.location.search + '#' + initialSection.id);
         }
 
-        snapScrollContainer.scrollTo({
-          top: initialSection.offsetTop,
-          behavior: 'auto'
-        });
+        if (isSnapScrollEnabled()) {
+          snapScrollContainer.scrollTo({
+            top: initialSection.offsetTop,
+            behavior: 'auto'
+          });
+        } else {
+          window.scrollTo({
+            top: 0,
+            behavior: 'auto'
+          });
+        }
         activateSectionNav(initialSection);
       }
 
       if (snapSections.length > 0) {
-        activateSectionNav(snapSections[0]);
-        window.requestAnimationFrame(resetToInitialSection);
+        if (isSnapScrollEnabled()) {
+          activateSectionNav(snapSections[0]);
+          window.requestAnimationFrame(resetToInitialSection);
+        }
 
-        if ('IntersectionObserver' in window) {
+        if (isSnapScrollEnabled() && 'IntersectionObserver' in window) {
           var sectionObserver = new IntersectionObserver(function(entries) {
             var visibleEntries = entries
               .filter(function(entry) { return entry.isIntersecting; })
@@ -121,6 +164,10 @@
 
       window.addEventListener('hashchange', function() {
         scrollToHashSection('smooth');
+      });
+
+      snapMediaQuery.addEventListener('change', function(event) {
+        if (event.matches) resetToInitialSection();
       });
 
       ['wheel', 'touchmove'].forEach(function(eventName) {
