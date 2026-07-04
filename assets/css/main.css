@@ -456,12 +456,27 @@ main.container {
 }
 
 .portfolio-section-nav {
-  position: absolute;
+  position: fixed;
   right: clamp(1.2rem, 4vw, 3rem);
   bottom: clamp(1.5rem, 4vw, 2.5rem);
+  z-index: 20;
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.18s ease, visibility 0.18s ease;
+}
+
+.home-snap .portfolio-section-nav {
+  right: max(clamp(1.2rem, 4vw, 3rem), calc((100vw - 300px) * 0.03));
+}
+
+.portfolio-section-nav.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }
 
 .portfolio-scroll {

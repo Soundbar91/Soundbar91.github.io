@@ -43,6 +43,41 @@
     });
 
     if (snapScrollContainer) {
+      var snapSections = Array.prototype.slice.call(document.querySelectorAll('.home-snap .portfolio-hero, .home-snap .portfolio-section'));
+      var activeSection = null;
+
+      function activateSectionNav(section) {
+        if (!section || activeSection === section) return;
+        activeSection = section;
+        snapSections.forEach(function(item) {
+          var nav = item.querySelector('.portfolio-section-nav');
+          if (nav) nav.classList.toggle('is-active', item === section);
+        });
+      }
+
+      if (snapSections.length > 0) {
+        activateSectionNav(snapSections[0]);
+
+        if ('IntersectionObserver' in window) {
+          var sectionObserver = new IntersectionObserver(function(entries) {
+            var visibleEntries = entries
+              .filter(function(entry) { return entry.isIntersecting; })
+              .sort(function(a, b) { return b.intersectionRatio - a.intersectionRatio; });
+
+            if (visibleEntries.length > 0) {
+              activateSectionNav(visibleEntries[0].target);
+            }
+          }, {
+            root: snapScrollContainer,
+            threshold: [0.45, 0.6, 0.75]
+          });
+
+          snapSections.forEach(function(section) {
+            sectionObserver.observe(section);
+          });
+        }
+      }
+
       ['wheel', 'touchmove'].forEach(function(eventName) {
         snapScrollContainer.addEventListener(eventName, hideScrollControls, { passive: true });
       });
