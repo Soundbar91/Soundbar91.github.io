@@ -103,8 +103,8 @@ Extract 단계에서 데이터를 Document 클래스로 변환해서 가져왔�
 @Configuration
 public class VectorStoreConfig {
 
-		...
-		
+    ...
+
     @Bean
     public ApplicationRunner vectorStoreInitializer(
         FaqReader faqReader,
@@ -150,15 +150,15 @@ public class ChatService {
                 당신은 초록 코퍼레이션에서 고객지원 챗봇을 담당하는 역할입니다.
                 제공된 문서를 참고하여 고객에게 답변을 해주세요.
                 모든 응답은 한국어로 해야하며, 초록 코퍼레이션과 무관한 내용은 다루지 마세요.
-                
+
                 %s
                 """.formatted(context))
             .user(request.question())
             .call()
             .chatResponse();
-		...
+    ...
 }
-            
+
 ```
 
 - SeachRequest : VectoStore에서 유사도 검색을 요청하기 위해 필요한 클래스이다.
@@ -309,7 +309,7 @@ String context = documents.stream()
             .sorted(Comparator.comparingInt(this::orderByLayer))
             .map(Document::getText)
             .collect(Collectors.joining("\n\n"));
-    
+
 private int orderByLayer(Document document) {
     Object layer = document.getMetadata().get("layer");
 
@@ -445,4 +445,3 @@ Spring AI와 2주간의 놀이가 끝이 났다. 처음에는 Spring AI를 학�
 이 과정에서 가설을 세우고 다양한 시도를 하면서 오랜만에 생각이라는 것을 해봤다. 최근에 AI 코딩을 하면서 직접 코드를 작성하는 일이 줄어드니 생각을 많이 안하는 거 같고 뇌가 굳어지고 있다는 느낌을 받았다. 하지만, 할루시네이션을 어떻게 개선하고 정확도를 향상시킬지에 대해서 고민을 하다보니 굳어진 뇌가 활성화되는 느낌을 받았다. 
 
 또한, AI 관련 지식이 거의 없었는데 이번 과정을 통해 RAG, 임베딩, 유사도 등 학습할 수 있는 기회가 되어 좋았다. 이번 부트캠프는 여기서 끝나지만 해당 경험을 살려 AI를 프로젝트에 접목해보고 싶다는 생각이 들었다.
-

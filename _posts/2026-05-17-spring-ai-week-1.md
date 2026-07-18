@@ -96,8 +96,8 @@ public class ChatService {
 - prompt() : 체이닝으로 유저, 시스템 프롬포트를 설정할 수 있다.
 	```java
 chatclinet.prompt()
-					.system(/* 시스템 프롬프트 */)
-					.user(/* 유저 프롬프트 */)
+    .system(/* 시스템 프롬프트 */)
+    .user(/* 유저 프롬프트 */)
 	```
 
 - prompt(Prompt prompt) : Prompt 인스턴스를 직접 전달할 수 있다.
@@ -107,20 +107,20 @@ chatclinet.prompt()
 
 ```java
 ChatResponse chatResponse = chatclinet.prompt()
-																			.system(/* 시스템 프롬프트 */)
-																			.user(/* 유저 프롬프트 */)
-																			.call()
-																			.chatResponse();
+    .system(/* 시스템 프롬프트 */)
+    .user(/* 유저 프롬프트 */)
+    .call()
+    .chatResponse();
 ```
 
 `ChatResponse` 클래스가 아닌 별도의 응답값으로 받고 싶다면 체이닝으로 `entity` 를 호출하면 된다. AI에게 프롬프트를 전달하기 전 컨버터가 프롬프트에 응답 형식을 지정하는 지시문을 추가한다. 자세한 내용은 [공식 문서](https://docs.spring.io/spring-ai/reference/api/structured-output-converter.html)를 참고해보면 될 거 같다.
 
 ```java
 EntityClass entityClass = chatclinet.prompt()
-																		.system(/* 시스템 프롬프트 */)
-																		.user(/* 유저 프롬프트 */)
-																		.call()
-																		.entity(EntityClass.class);
+    .system(/* 시스템 프롬프트 */)
+    .user(/* 유저 프롬프트 */)
+    .call()
+    .entity(EntityClass.class);
 ```
 
 추가적인 내용은 [공식 문서](https://docs.spring.io/spring-ai/reference/api/chatclient.html#_creating_a_chatclient)를 참고해보면 될 거 같다.
@@ -236,7 +236,7 @@ public QuestionAskResponse askQuestion(QuestionAskRequest request) {
             당신은 초록 코퍼레이션에서 고객지원 챗봇을 담당하는 역할입니다.
             제공된 문서를 참고하여 고객에게 답변을 해주세요.
             모든 응답은 한국어로 해야하며, 초록 코퍼레이션과 무관한 내용은 다루지 마세요.
-                
+
             %s
             """.formatted(faq))
         .user(request.question())
@@ -290,4 +290,3 @@ Chatlog의 경우 굳이 지금 넣어야하는 의문이 들었다. 왜냐하�
 ## 마무리
 
 1주차는 이렇게 마무리했다. 새로운 기술을 배우니, 취준에 찌들어있던 삶에 새로운 도파민이 돌기 시작했다. 공식 문서를 읽고 이렇게 학습해 본 경험이 거의 없어서 익숙하지 않았지만, AI 디톡스 겸 해볼 만하다고 생각했다. 2주차도 잘 진행하여 마무리를 잘 지었으면 좋겠다.
-
