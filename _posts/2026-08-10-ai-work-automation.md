@@ -69,6 +69,16 @@ excerpt: 코인 서비스의 AI 업무 자동화 과정을 알아보자
 
 요구 사항 자체는 크게 어렵지 않기 때문에, 코딩 에이전트 도구를 사용하면 금방 할 수 있었다. 다만 중간중간 제약 사항이 생긴 부분은 있었다.
 
+#### API 추가 및 수정
+
+![](/assets/images/posts/ai-work-automation/api-update-01.png)
+
+![](/assets/images/posts/ai-work-automation/api-update-02.png)
+
+데이터를 DB에 직접 넣는 방식을 처음에 생각했는데, 이렇게 되면 도메인에서 요구하는 유효성이 깨질 것 같아 어드민 API를 호출하는 방식으로 하기로 기획했다.
+
+그래서 어드민 API를 쭉 보니, 추가해야 하는 API도 있고 무슨 이유인지는 모르겠는데 업데이트를 막은 API도 있었다. PR을 확인해도 이유가 적혀 있지 않았고, 꽤 오래전 내용이라 트래킹이 잘 안 됐다. 혹시 모르기 때문에 내부 로직에서 분기 처리를 진행했다.
+
 #### 스테이지/프로덕션 구분
 
 ![](/assets/images/posts/ai-work-automation/image-04.png)
